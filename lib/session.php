@@ -30,20 +30,20 @@
             }
             if(self::get("adminlogin") == false) {
                 self::destroy();
-                header("Location:login.php");
+                header("Location:/admin/login.php");
+                die();
             }
         }
         public static function checkLogin(){
             self::init();
             if(self::get("adminlogin") == true) {
-            header("Location:index.php");
+            header("Location:/admin/index.php");
             }
         }
         public static function destroy()
         {
             session_destroy();
-            header("Location:login.php");
+            header("Location:/admin/login.php");
         }
               
 }
-?>

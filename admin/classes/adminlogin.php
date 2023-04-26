@@ -1,5 +1,8 @@
-<?php 
-    include '../lib/session.php';
+<?php
+
+use helpers\Format;
+
+include '../lib/session.php';
     Session::checkLogin(); 
     include '../lib/database.php';
     include '../helpers/format.php';

@@ -1,5 +1,5 @@
 <?php
-include './inc/header.php';
+include '../inc/header.php';
 ?>
 <!-- Content wrapper -->
 <div class="content-wrapper">
@@ -462,5 +462,5 @@ include './inc/header.php';
     </div>
     <!-- / Content -->
     <?php
-    include './inc/footer.php'
+include './inc/footer.php'
     ?>
