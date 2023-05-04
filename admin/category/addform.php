@@ -75,6 +75,7 @@ $idscript = "n" . strval(random_int(0, 99));
                 thongBao.classList.toggle('d-none')
                 thongBao.classList.toggle('fade')
                 tuTat(thongBao)
+                napLaiTable();
             })
     }
 

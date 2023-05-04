@@ -1,5 +1,5 @@
 <?php
-include '../inc/header.php';
+ob_start();
 ?>
 <!-- Content wrapper -->
 <div class="content-wrapper">
@@ -460,7 +460,9 @@ include '../inc/header.php';
             <!--/ Transactions -->
         </div>
     </div>
+    
     <!-- / Content -->
     <?php
-include './inc/footer.php'
+    $content = ob_get_clean();
+    include './layout/template.php';
     ?>

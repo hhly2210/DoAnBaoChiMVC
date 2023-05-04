@@ -1,5 +1,6 @@
 <?php
 include '../../lib/session.php';
+include '../../commons/utils.php';
 Session::checkSession();
 header("Cache-Control: no-cache, must-revalidate");
 header("Pragma: no-cache");

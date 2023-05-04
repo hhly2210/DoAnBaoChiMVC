@@ -6,7 +6,7 @@ ob_start();
 
 
 <?php
-include '../classes/category.php';
+include '../classes/user.php';
 
 // View thêm thể loại
 include 'addform.php';
@@ -33,5 +33,5 @@ include 'addform.php';
 <!-- Kết thúc đoạn mã HTML -->
 <?php
 $content = ob_get_clean();
-include_once '../views/template.php';
+include_once '../layout/template.php';
 ?>
