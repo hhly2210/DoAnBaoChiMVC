@@ -1,0 +1,6 @@
+POST http://localhost/admin/category/delete.php
+Content-Type: application/json
+
+{
+  "catID": 1
+}
