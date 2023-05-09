@@ -5,7 +5,7 @@
             body: JSON.stringify({adminID: id}),
         })
             .then(result => {
-                let table = document.getElementById('category-list')
+                let table = document.getElementById('user-list')
                 if (result.status === 200) {
                     napLaiTable()
                 }else{

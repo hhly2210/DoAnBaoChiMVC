@@ -2,26 +2,29 @@
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"
       data-template="vertical-menu-template-free">
 <?php
-include 'header.php';
-include 'head.php';
+include __DIR__ . '/header.php';
+include __DIR__ . '/head.php';
 ?>
 
 <body>
 <!-- Layout wrapper -->
 <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
-        <?php include 'sidebar.php' ?>
+        <?php include __DIR__ . '/sidebar.php' ?>
         <!-- Layout container -->
         <div class="layout-page">
             <?php
-            include 'nav.php';
+            include __DIR__ . '/nav.php';
             ?>
 
             <!-- Content wrapper -->
             <div class="content-wrapper">
                 <!-- Content -->
                 <div class="container-xxl flex-grow-1 container-p-y">
-                <?php echo $content; ?>
+                    <?php
+                    global $content;
+                    echo $content;
+                    ?>
                 </div>
                 <!-- / Content -->
                 <div class="content-backdrop fade"></div>
@@ -29,7 +32,7 @@ include 'head.php';
             <!-- Content wrapper -->
 
             <?php
-            include 'footer.php';
+            include __DIR__ . '/footer.php';
             ?>
         </div>
         <!-- / Layout page -->
@@ -40,7 +43,7 @@ include 'head.php';
 <!-- / Layout wrapper -->
 
 <?php
-include 'scripts.php';
+include __DIR__ . '/scripts.php';
 ?>
 
 </body>

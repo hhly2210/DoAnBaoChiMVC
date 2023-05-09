@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $roleID = $_POST['roleID'];
     $active = $_POST['Active'];
     $avatar = $_POST['Avatar'];
-	$insertCat = $user->update_user($id, $adminName, $Email, $adminPass, $roleID, $active, $avatar);
+	$insertUser = $user->update_user($id, $adminName, $Email, $adminPass, $roleID, $active, $avatar);
 	http_response_code(200);
 	die();
 }

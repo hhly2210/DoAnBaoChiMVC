@@ -7,9 +7,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $adminUser = $_POST['adminUser'];
     $adminPass = $_POST['adminPass'];
     $roleID = $_POST['roleID'];
-    $active = $_POST['Active'];
-    $avatar = $_POST['Avatar'];
-    $insertUser = $user->insert_user($adminName, $Email, $adminUser, $adminPass, $roleID, $active, $avatar);
+    $Active = $_POST['Active'];
+    $Avatar = $_POST['Avatar'];
+    $insertUser = $user->insert_user($adminName, $Email, $adminUser, $adminPass, $roleID, $Active, $Avatar);
     http_response_code(200);
     die();
 }

@@ -1,4 +1,4 @@
-<table id="category-list" class="table table-dark">
+<table id="user-list" class="table table-dark">
     <thead>
     <tr>
         <th>STT</th>
@@ -16,13 +16,13 @@
 
 <script>
     function napLaiTable() {
-        let table = document.getElementById('category-list')
+        let table = document.getElementById('user-list')
         table.tBodies[0].innerHTML= "";
         showTable();
     }
     
     function showTable() {
-        let table = document.getElementById('category-list')
+        let table = document.getElementById('user-list')
         fetch('/admin/user/getAll.php')
             .then(r => r.json())
             .then(data => {

@@ -39,6 +39,7 @@ include '../lib/session.php';
                     Session::set('adminID', $value['adminID']);
                     Session::set('adminUser', $value['adminUser']);
                     Session::set('adminName', $value['adminName']);
+                    Session::set('Avatar', $value['Avatar']);
                     header('Location:index.php'); 
                 }else {
                     $alert = "Tài khoản hoặc mật khẩu không đúng";

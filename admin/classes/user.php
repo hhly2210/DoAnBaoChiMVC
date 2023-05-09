@@ -58,9 +58,9 @@ class user
         return $result;
     }
 
-    public function update_user($id, $adminName, $Email, $adminPass, $roleID, $active, $avatar)
+    public function update_user($id, $adminName, $Email, $adminPass, $roleID, $Active, $Avatar)
     {
-        $query = "update tbl_admin set adminName = '$adminName', Email = '$Email', adminPass = '$adminPass', roleID = '$roleID', Active = '$active', Avatar = '$avatar' where adminID = $id ";
+        $query = "update tbl_admin set adminName = '$adminName', Email = '$Email', adminPass = '$adminPass', roleID = '$roleID', Active = '$Active', Avatar = '$Avatar' where adminID = $id ";
         $result = $this->db->update($query);
         return $result;
     }

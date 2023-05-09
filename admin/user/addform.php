@@ -18,27 +18,81 @@ $idscript = "n" . strval(random_int(0, 99));
                     <div class="card-body">
                         <form id="add-form" class="bg-light">
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="catName">Tên thể loại
+                                <label class="col-sm-2 col-form-label" for="adminName">Tên người dùng
                                     <span
                                         class="text-danger">*</span></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="catName"
-                                           id="catName"
+                                    <input type="text" class="form-control" name="adminName"
+                                           id="adminName"
                                            placeholder="Nhập vào đây👉👈"
                                            required/>
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="basic-default-message">Mô tả về thể
-                                    loại
-                                    trên</label>
+                                <label class="col-sm-2 col-form-label" for="Email">Email</label>
                                 <div class="col-sm-10">
-                                        <textarea id="basic-default-message" class="form-control" name="catDescription"
-                                                  placeholder="Là một thể loại mà🤔" aria-label="Là một thể loại mà🤔"
-                                                  aria-describedby="basic-icon-default-message2"></textarea>
+                                <div class="input-group input-group-merge">
+                                    <input
+                                        type="text"
+                                        id="basic-default-email"
+                                        class="form-control"
+                                        placeholder="lyhai"
+                                        aria-label="lyhai"
+                                        aria-describedby="Email2"
+                                    /><span class="input-group-text" id="Email2">@gmail.com</span>
+                                </div></div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label" for="adminUser">Tên tài khoản
+                                    <span
+                                        class="text-danger">*</span></label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="adminUser"
+                                           id="adminUser"
+                                           placeholder="admin😐"
+                                           required/>
                                 </div>
                             </div>
-                            <div class="row justify-content-end">
+                            <div class="mb-3 row">
+                                <label class="col-md-2 col-form-label" for="adminPass">Mật khẩu<span
+                                        class="text-danger">*</span></label>
+                                <div class="col-md-10">
+                                    <input class="form-control" type="password" name="adminPass" id="adminPass" />
+                                </div>
+                            </div>
+                            <div class="row gy-3">
+                                <div class="col-md">
+                                    <label class="col-md-2 col-form-label" for="roleID">Chức vụ<span
+                                            class="text-danger">*</span></label>
+                                    <div class="form-check form-check-inline mt-3">
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="roleID"
+                                            id="roleID"
+                                        />
+                                        <label class="form-check-label" for="roleID">1</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="roleID"
+                                            id="inlineRadio2"
+                                        />
+                                        <label class="form-check-label" for="inlineRadio2">2</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-check">
+                                <label class="col-md-2 col-form-check-label" for="Active"> Trạng thái </label>
+                                <input class="form-check-input" type="checkbox" name="Active" id="Active" checked />
+                            </div>
+                            <div class="mb-3">
+                                <label for="Avatar" class="form-label">Chọn ảnh đại diện</label>
+                                <input class="form-control" type="file" name="Avatar" id="Avatar" />
+                            </div>
+                            <div class="row justify-content-end mb-3">
                                 <div class="col-sm-10">
                                     <button type="submit" class="btn btn-primary">Xác nhận</button>
                                 </div>
@@ -62,14 +116,14 @@ $idscript = "n" . strval(random_int(0, 99));
         let form = document.getElementById('add-form')
         let thongBao = document.getElementById('$idscript');
         thongBao.noiDung = thongBao.querySelector('.noi-dung')
-        fetch('/admin/category/add.php', {method: 'POST', body: new FormData(form)})
+        fetch('/admin/user/add.php', {method: 'POST', body: new FormData(form)})
             .then(r => {
                 if (r.status === 200) {
                     thongBao.classList.add('alert-success')
-                    thongBao.noiDung.textContent = 'Thêm thể loại thành công👍'
+                    thongBao.noiDung.textContent = 'Thêm người dùng thành công👍'
                 } else {
                     thongBao.classList.add('alert-danger')
-                    thongBao.noiDung.textContent = 'Thêm thể loại thất bại🙅'
+                    thongBao.noiDung.textContent = 'Thêm người dùng thất bại🙅'
                 }
 
                 thongBao.classList.toggle('d-none')
@@ -81,13 +135,14 @@ $idscript = "n" . strval(random_int(0, 99));
 
     document.querySelector('#add-form button[type=submit]').addEventListener('click', e => {
         e.preventDefault()
-        if(document.getElementById('catName').value.length !== 0)
+        if (document.getElementById('adminName').value.length !== 0 && document.getElementById('adminUser').value.length !== 0
+            && document.getElementById('adminPass').value.length !== 0 && document.getElementById('Active').value.length !== 0)
             submit()
         else {
             let thongBao = document.getElementById('$idscript');
             thongBao.noiDung = thongBao.querySelector('.noi-dung')
             thongBao.classList.add('alert-warning')
-            thongBao.noiDung.textContent = 'Tên thể loại không được để trống⛔'
+            thongBao.noiDung.textContent = 'Các ô quan trọng không được để trống⛔'
             thongBao.classList.toggle('d-none')
             thongBao.classList.toggle('fade')
             tuTat(thongBao)
