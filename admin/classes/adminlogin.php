@@ -2,10 +2,10 @@
 
 use helpers\Format;
 
-include __DIR__ . '/../../lib/session.php';
+include_once __DIR__ . '/../../lib/session.php';
 Session::checkLogin();
-include __DIR__ . '/../../lib/database.php';
-include __DIR__ . '/../../helpers/format.php';
+include_once __DIR__ . '/../../lib/database.php';
+include_once __DIR__ . '/../../helpers/format.php';
 
 ?>
 

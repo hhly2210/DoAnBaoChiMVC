@@ -6,10 +6,10 @@ ob_start();
 
 
 <?php
-include '../classes/user.php';
+include_once '../classes/category.php';
 
 // View thêm thể loại
-include 'addform.php';
+include_once 'addform.php';
 ?>
 
 <!-- Hiển thị danh sách thể loại -->
@@ -20,13 +20,13 @@ include 'addform.php';
     <div class="card box round first grid">
         <h5 class="card-header">Danh sách thể loại</h5>
         <div class="table-responsive text-nowrap">
-            <?php include './JsTable.php';
-                include './deletescript.php'; ?>
+            <?php include_once './JsTable.php';
+                include_once './deletescript.php'; ?>
         </div>
     </div>
 </div>
 <!--/ Bootstrap Dark Table -->
-<?php include 'editform.php'?>
+<?php include_once 'editform.php'?>
 <!-- / Content -->
 
 

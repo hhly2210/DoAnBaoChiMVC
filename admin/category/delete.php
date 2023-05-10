@@ -1,5 +1,5 @@
 <?php
-include '../classes/category.php';
+include_once '../classes/category.php';
 $cat = new category();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $inputJSON = file_get_contents('php://input');

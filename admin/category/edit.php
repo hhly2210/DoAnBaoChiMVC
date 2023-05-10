@@ -1,6 +1,6 @@
 <?php
 
-include '../classes/category.php';
+include_once '../classes/category.php';
 $cat = new category();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$id = $_POST['catID'];
