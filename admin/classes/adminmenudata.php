@@ -83,7 +83,7 @@ class adminmenudata
     public function get_menu_by_role()
     {
         $id = Session::get('roleID');
-        $query = "select * from tbl_adminmenu where adminMenuID in (select tbl_adminmenurole.adminMenuID from tbl_adminmenurole where roleID=$id) where IsActive = true order by ParentLevel asc, MenuOrder asc";
+        $query = "select * from tbl_adminmenu where adminMenuID in (select tbl_adminmenurole.adminMenuID from tbl_adminmenurole where roleID=$id) and IsActive = true order by ParentLevel asc, MenuOrder asc";
         $result = $this->db->select($query);
         $list = [];
         while ($record = $result->fetch_assoc()) {
