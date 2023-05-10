@@ -39,7 +39,7 @@ class user
         $Active = mysqli_real_escape_string($this->db->link, $Active);
         $Avatar = mysqli_real_escape_string($this->db->link, $Avatar);
         if (!empty($adminName)) {
-            $query = "INSERT INTO tbl_admin(adminName, Email, adminUser, adminPass, roleID, Active, Avatar) VALUES('$adminName', '$Email', '$adminUser', '$adminPass', '$roleID', '$Active', '$Avatar')";
+            $query = "INSERT INTO tbl_admin(adminName, Email, adminUser, adminPass, roleID, Active, Avatar) VALUES('$adminName', '$Email', '$adminUser', '$adminPass', $roleID, $Active, '$Avatar')";
             $result = $this->db->insert($query);
         }
     }
@@ -60,7 +60,7 @@ class user
 
     public function update_user($id, $adminName, $Email, $adminPass, $roleID, $Active, $Avatar)
     {
-        $query = "update tbl_admin set adminName = '$adminName', Email = '$Email', adminPass = '$adminPass', roleID = '$roleID', Active = '$Active', Avatar = '$Avatar' where adminID = $id ";
+        $query = "update tbl_admin set adminName = '$adminName', Email = '$Email', adminPass = '$adminPass', roleID = $roleID, Active = $Active, Avatar = '$Avatar' where adminID = $id ";
         $result = $this->db->update($query);
         return $result;
     }

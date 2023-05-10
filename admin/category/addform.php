@@ -29,9 +29,7 @@ $idscript = "n" . strval(random_int(0, 99));
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="basic-default-message">Mô tả về thể
-                                    loại
-                                    trên</label>
+                                <label class="col-sm-2 col-form-label" for="basic-default-message">Mô tả về thể loại trên</label>
                                 <div class="col-sm-10">
                                         <textarea id="basic-default-message" class="form-control" name="catDescription"
                                                   placeholder="Là một thể loại mà🤔" aria-label="Là một thể loại mà🤔"
