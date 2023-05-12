@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $adminPass = $_POST['adminPass'];
     $roleID = $_POST['roleID'];
     $active = $_POST['Active'];
-	$insertUser = $user->update_user($id, $adminName, $Email, $adminPass, $roleID, $active);
+	$insertUser = $user->update_user($id, $adminName, $Email, $adminUser, $adminPass, $roleID, $active);
 	http_response_code(200);
 	die();
 }

@@ -38,25 +38,31 @@ class user
         $Active = mysqli_real_escape_string($this->db->link, $Active);
         //      Kiểm tra hình ảnh và upload vào folder avatar'
         $unique_image = '';
-        $hadFile = !empty($_FILES['Avatar']);
+        list($hadFile, $file_temp, $unique_image, $uploaded_image) = $this->extracted();
+
+        if (!empty($adminName)) {
+            if ($hadFile) move_uploaded_file($file_temp, $uploaded_image);
+            $query = "INSERT INTO tbl_admin(adminName, Email, adminUser, adminPass, roleID, Active, Avatar) VALUES('$adminName', '$Email', '$adminUser', md5('$adminPass'), $roleID, $Active, '$unique_image')";
+            $result = $this->db->insert($query);
+        }
+    }
+    /**
+     * @param string $unique_image
+     * @return array
+     */
+    public function extracted(): array
+    {
+        $hadFile = !empty($_FILES['Avatar']) && $_FILES['Avatar']['size'] != 0 && str_starts_with($_FILES['Avatar']['type'], 'image/');
         if ($hadFile) {
-            $permited = array('jpg', 'jpeg', 'png', 'gif');
             $file_name = $_FILES['Avatar']['name'];
-            $file_size = $_FILES['Avatar']['size'];
             $file_temp = $_FILES['Avatar']['tmp_name'];
             $div = explode('.', $file_name);
             $file_ext = strtolower(end($div));
             $unique_image = substr(md5(time()), 0, 10) . '.' . $file_ext;
             $uploaded_image = __DIR__ . "/../resource/assets/img/avatars/" . $unique_image;
-        } 
-
-        if (!empty($adminName)) {
-            if($hadFile) move_uploaded_file($file_temp, $uploaded_image);
-            $query = "INSERT INTO tbl_admin(adminName, Email, adminUser, adminPass, roleID, Active, Avatar) VALUES('$adminName', '$Email', '$adminUser', md5('$adminPass'), $roleID, $Active, '$unique_image')";
-            $result = $this->db->insert($query);
         }
+        return array($hadFile, $file_temp, $unique_image, $uploaded_image);
     }
-
     public function show_user()
     {
         $query = "SELECT tbl_admin .*, tr . roleName FROM tbl_admin LEFT JOIN tbl_role tr on tbl_admin . roleID = tr . roleID ORDER BY adminID DESC";
@@ -71,9 +77,17 @@ class user
         return $result;
     }
 
-    public function update_user($id, $adminName, $Email, $adminPass, $roleID, $Active, $Avatar)
+    public function update_user($id, $adminName, $Email, $adminUser, $adminPass, $roleID, $Active)
     {
-        $query = "update tbl_admin set adminName = '$adminName', Email = '$Email', adminPass = '$adminPass', roleID = $roleID, Active = $Active, Avatar = '$Avatar' where adminID = $id ";
+        list($hadFile, $file_temp, $unique_image, $uploaded_image) = $this->extracted();
+
+        $set = "adminName = '$adminName', Email = '$Email', adminUser = '$adminUser', roleID = $roleID, Active = $Active, Avatar = '$unique_image'";
+        if (strlen($adminPass) != 0) {
+            $set .= ", adminPass = md5('$adminPass')";
+        }
+
+        if ($hadFile) move_uploaded_file($file_temp, $uploaded_image);
+        $query = "update tbl_admin set " . $set . " where adminID = $id";
         $result = $this->db->update($query);
         return $result;
     }

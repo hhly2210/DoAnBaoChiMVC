@@ -12,6 +12,7 @@ $json = [];
 
 if( $result = $showUser->fetch_assoc())
 {
+    unset($result['adminPass']);
     $jsonString = json_encode($result);
     echo $jsonString;
 }

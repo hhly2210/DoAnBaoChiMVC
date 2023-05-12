@@ -64,7 +64,7 @@ $idscript = "n" . strval(random_int(0, 99));
                             </div>
                             <div class="mb-3">
                                 <label for="Avatar" class="form-label">Chọn ảnh đại diện</label>
-                                <input class="form-control" type="file" name="Avatar" id="Avatar" />
+                                <input accept="image/*" class="form-control" type="file" name="Avatar" id="Avatar" />
                             </div>
                             <div class="row justify-content-end mb-3">
                                 <div class="col-sm-10">

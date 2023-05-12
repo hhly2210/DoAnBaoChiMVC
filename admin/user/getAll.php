@@ -18,7 +18,7 @@ while ( $result = $showUser->fetch_assoc())
         'roleName' => $result['roleName'],
         'Active' => $result['Active'],
         'Avatar' => $result['Avatar']);
-    $json[] = $tmp;
+    $json[] = $result;
 }
 
 $jsonString = json_encode( $json );
