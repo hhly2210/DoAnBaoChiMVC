@@ -44,6 +44,7 @@ class adminlogin
                 Session::set('adminUser', $value['adminUser']);
                 Session::set('adminName', $value['adminName']);
                 Session::set('roleID', $value['roleID']);
+                Session::set('roleName', $this->admin_lay_ten_quyen($value['roleID']));
                 Session::set('Avatar', $value['Avatar']);
                 header('Location:index.php');
             } else {
@@ -54,9 +55,11 @@ class adminlogin
 
     }
 
-    public function admin_check()
+    public function admin_lay_ten_quyen($id)
     {
-        # code...
+        $query = "SELECT tbl_role.roleName FROM tbl_role WHERE roleID = $id";
+        $result = $this->db->select($query)->fetch_assoc();
+        return $result['roleName'];
     }
 
 }

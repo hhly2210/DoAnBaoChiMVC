@@ -16,45 +16,71 @@ $idscript = "n" . strval(random_int(0, 99));
             <div class="card-body p-0">
                 <div class="card form-wrapper d-none">
                     <div class="card-body">
-                        <form id="add-form" class="bg-light" enctype="multipart/form-data">
+                        <form id="add-form" class="bg-light">
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="adminName">Tên người dùng
-                                    <span class="text-danger">*</span></label>
+                                    <span
+                                        class="text-danger">*</span></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="adminName" id="adminName" placeholder="Nhập vào đây👉👈" required />
+                                    <input type="text" class="form-control" name="adminName"
+                                           id="adminName"
+                                           placeholder="Nhập vào đây👉👈"
+                                           required/>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="Email">Email</label>
                                 <div class="col-sm-10">
-                                    <div class="input-group input-group-merge">
-                                        <input type="text" id="basic-default-email" name="Email" class="form-control" placeholder="lyhai" aria-label="lyhai" aria-describedby="Email2" /><span class="input-group-text" id="Email2">@gmail.com</span>
-                                    </div>
-                                </div>
+                                <div class="input-group input-group-merge">
+                                    <input
+                                        type="text"
+                                        id="basic-default-email"
+                                        class="form-control"
+                                        placeholder="lyhai"
+                                        aria-label="lyhai"
+                                        aria-describedby="Email2"
+                                    /><span class="input-group-text" id="Email2">@gmail.com</span>
+                                </div></div>
                             </div>
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="adminUser">Tên tài khoản
-                                    <span class="text-danger">*</span></label>
+                                    <span
+                                        class="text-danger">*</span></label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="adminUser" id="adminUser" placeholder="admin😐" required />
+                                    <input type="text" class="form-control" name="adminUser"
+                                           id="adminUser"
+                                           placeholder="admin😐"
+                                           required/>
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label class="col-md-2 col-form-label" for="adminPass">Mật khẩu<span class="text-danger">*</span></label>
+                                <label class="col-md-2 col-form-label" for="adminPass">Mật khẩu<span
+                                        class="text-danger">*</span></label>
                                 <div class="col-md-10">
                                     <input class="form-control" type="password" name="adminPass" id="adminPass" />
                                 </div>
                             </div>
                             <div class="row gy-3">
                                 <div class="col-md">
-                                    <label class="col-md-2 col-form-label" for="roleID">Chức vụ<span class="text-danger">*</span></label>
+                                    <label class="col-md-2 col-form-label" for="roleID">Chức vụ<span
+                                            class="text-danger">*</span></label>
                                     <div class="form-check form-check-inline mt-3">
-                                        <input class="form-check-input" type="radio" name="roleID" id="roleID" value="1" />
-                                        <label class="form-check-label" for="roleID">Admin</label>
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="roleID"
+                                            id="roleID"
+                                        />
+                                        <label class="form-check-label" for="roleID">1</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="roleID" id="inlineRadio2" value="2" />
-                                        <label class="form-check-label" for="inlineRadio2">Người viết bài</label>
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="roleID"
+                                            id="inlineRadio2"
+                                        />
+                                        <label class="form-check-label" for="inlineRadio2">2</label>
                                     </div>
                                 </div>
                             </div>
@@ -88,19 +114,9 @@ $idscript = "n" . strval(random_int(0, 99));
 <script>
     function submit() {
         let form = document.getElementById('add-form')
-        let formData = new FormData(form)
-
-        if (formData.has('Active'))
-            formData.set('Active', '1')
-        else
-            formData.append('Active', '0')
-
-        let thongBao = document.getElementById('$idscript')
+        let thongBao = document.getElementById('$idscript');
         thongBao.noiDung = thongBao.querySelector('.noi-dung')
-        fetch('/admin/user/add.php', {
-                method: 'POST',
-                body: formData
-            })
+        fetch('/admin/user/add.php', {method: 'POST', body: new FormData(form)})
             .then(r => {
                 if (r.status === 200) {
                     thongBao.classList.add('alert-success')
@@ -119,8 +135,8 @@ $idscript = "n" . strval(random_int(0, 99));
 
     document.querySelector('#add-form button[type=submit]').addEventListener('click', e => {
         e.preventDefault()
-        if (document.getElementById('adminName').value.length !== 0 && document.getElementById('adminUser').value.length !== 0 &&
-            document.getElementById('adminPass').value.length !== 0 && document.getElementById('Active').value.length !== 0)
+        if (document.getElementById('adminName').value.length !== 0 && document.getElementById('adminUser').value.length !== 0
+            && document.getElementById('adminPass').value.length !== 0 && document.getElementById('Active').value.length !== 0)
             submit()
         else {
             let thongBao = document.getElementById('$idscript');
@@ -140,3 +156,4 @@ $idscript = "n" . strval(random_int(0, 99));
         }, 3456);
     }
 </script>
+

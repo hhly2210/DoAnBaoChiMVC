@@ -53,7 +53,7 @@
                                                         ?>
                                                     </span>
                                     <small class="text-muted"><?php
-                                        echo Session::get('roleID');
+                                        echo Session::get('roleName');
                                         ?></small>
                                 </div>
                             </div>

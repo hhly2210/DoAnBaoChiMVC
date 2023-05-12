@@ -35,7 +35,7 @@
         </td>
         <td><span>${item.Email}</span></td>
         <td><span>${item.roleName}</span></td>
-        <td><span>${item.Active? 'Đang hoạt động' : 'Không hoạt động'}</span></td>
+        <td><span>${item.Active}</span></td>
         <td><span>${item.Avatar}</span></td>
         <td>
             <div class="dropdown">

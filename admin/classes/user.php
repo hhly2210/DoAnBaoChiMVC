@@ -21,7 +21,7 @@ class user
         $this->fm = new Format();
     }
 
-    public function insert_user($adminName, $Email, $adminUser, $adminPass, $roleID, $Active, $Avatar)
+    public function insert_user($adminName, $Email, $adminUser, $adminPass, $roleID, $Active)
     {
         $adminName = $this->fm->validation($adminName);
         $Email = $this->fm->validation($Email);
@@ -29,7 +29,6 @@ class user
         $adminPass = $this->fm->validation($adminPass);
         $roleID = $this->fm->validation($roleID);
         $Active = $this->fm->validation($Active);
-        $Avatar = $this->fm->validation($Avatar);
         // 
         $adminName = mysqli_real_escape_string($this->db->link, $adminName);
         $Email = mysqli_real_escape_string($this->db->link, $Email);
@@ -37,16 +36,30 @@ class user
         $adminPass = mysqli_real_escape_string($this->db->link, $adminPass);
         $roleID = mysqli_real_escape_string($this->db->link, $roleID);
         $Active = mysqli_real_escape_string($this->db->link, $Active);
-        $Avatar = mysqli_real_escape_string($this->db->link, $Avatar);
+        //      Kiểm tra hình ảnh và upload vào folder avatar'
+        $unique_image = '';
+        $hadFile = !empty($_FILES['Avatar']);
+        if ($hadFile) {
+            $permited = array('jpg', 'jpeg', 'png', 'gif');
+            $file_name = $_FILES['Avatar']['name'];
+            $file_size = $_FILES['Avatar']['size'];
+            $file_temp = $_FILES['Avatar']['tmp_name'];
+            $div = explode('.', $file_name);
+            $file_ext = strtolower(end($div));
+            $unique_image = substr(md5(time()), 0, 10) . '.' . $file_ext;
+            $uploaded_image = __DIR__ . "/../resource/assets/img/avatars/" . $unique_image;
+        } 
+
         if (!empty($adminName)) {
-            $query = "INSERT INTO tbl_admin(adminName, Email, adminUser, adminPass, roleID, Active, Avatar) VALUES('$adminName', '$Email', '$adminUser', '$adminPass', $roleID, $Active, '$Avatar')";
+            if($hadFile) move_uploaded_file($file_temp, $uploaded_image);
+            $query = "INSERT INTO tbl_admin(adminName, Email, adminUser, adminPass, roleID, Active, Avatar) VALUES('$adminName', '$Email', '$adminUser', md5('$adminPass'), $roleID, $Active, '$unique_image')";
             $result = $this->db->insert($query);
         }
     }
 
     public function show_user()
     {
-        $query = "SELECT * FROM tbl_admin ORDER BY adminID DESC";
+        $query = "SELECT tbl_admin .*, tr . roleName FROM tbl_admin LEFT JOIN tbl_role tr on tbl_admin . roleID = tr . roleID ORDER BY adminID DESC";
         $result = $this->db->select($query);
         return $result;
     }
@@ -64,6 +77,7 @@ class user
         $result = $this->db->update($query);
         return $result;
     }
+
     public function delete_user($id)
     {
         $query = "delete from tbl_admin where adminID = $id";
