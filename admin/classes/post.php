@@ -50,7 +50,10 @@ class post
 
     public function show_post()
     {
-        $query = "SELECT * FROM tbl_post ORDER BY postID DESC";
+        $query = "SELECT tbl_post.*, tbad.adminName, cat.catName FROM tbl_post
+    LEFT JOIN tbl_admin tbad on tbl_post.adminID = tbad.adminID
+    LEFT JOIN tbl_category cat on tbl_post.catID = cat.catID
+    ORDER BY postID DESC";
         $result = $this->db->select($query);
         return $result;
     }

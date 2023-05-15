@@ -3,9 +3,9 @@
 use helpers\Format;
 
 include_once __DIR__ . '/../../lib/session.php';
-Session::checkLogin();
 include_once __DIR__ . '/../../lib/database.php';
 include_once __DIR__ . '/../../helpers/format.php';
+include_once __DIR__ . '/roleurl.php';
 
 ?>
 
@@ -38,6 +38,8 @@ class adminlogin
             $query = "SELECT * FROM tbl_admin WHERE adminUser = '$adminUser' AND adminPass = '$adminPass' LIMIT 1";
             $result = $this->db->select($query);
             if ($result != false) {
+                session_destroy();
+                session_start();
                 $value = $result->fetch_assoc();
                 Session::set('adminlogin', true);
                 Session::set('adminID', $value['adminID']);
@@ -46,6 +48,8 @@ class adminlogin
                 Session::set('roleID', $value['roleID']);
                 Session::set('roleName', $this->admin_lay_ten_quyen($value['roleID']));
                 Session::set('Avatar', $value['Avatar']);
+				$urls = new roleurl();
+                Session::set('urls', $urls->get_all_url_from_role($value['roleID']));
                 header('Location:index.php');
             } else {
                 $alert = "Tài khoản hoặc mật khẩu không đúng";
@@ -55,7 +59,7 @@ class adminlogin
 
     }
 
-    public function admin_lay_ten_quyen($id)
+    private function admin_lay_ten_quyen($id)
     {
         $query = "SELECT tbl_role.roleName FROM tbl_role WHERE roleID = $id";
         $result = $this->db->select($query)->fetch_assoc();

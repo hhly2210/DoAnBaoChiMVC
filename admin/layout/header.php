@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . '/../../lib/session.php';
+include_once __DIR__ . '/../../lib/session.php';
 Session::checkSession();
 header("Cache-Control: no-cache, must-revalidate");
 header("Pragma: no-cache");

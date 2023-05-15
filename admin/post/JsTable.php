@@ -1,12 +1,12 @@
-<table id="user-list" class="table table-dark">
+<table id="post-list" class="table table-dark">
     <thead>
     <tr>
         <th>STT</th>
-        <th>Tên người dùng</th>
-        <th>Email</th>
-        <th>Chức vụ</th>
+        <th>Tiêu đề</th>
+        <th>Thể loại</th>
+        <th>Tác giả</th>
+        <th>Ngày viết bài</th>
         <th>Trạng thái</th>
-        <th>Avatar</th>
         <th>Sửa/Xoá</th>
     </tr>
     </thead>
@@ -16,14 +16,14 @@
 
 <script>
     function napLaiTable() {
-        let table = document.getElementById('user-list')
+        let table = document.getElementById('post-list')
         table.tBodies[0].innerHTML= "";
         showTable();
     }
     
     function showTable() {
-        let table = document.getElementById('user-list')
-        fetch('/admin/user/getAll.php')
+        let table = document.getElementById('post-list')
+        fetch('/admin/post/getAll.php')
             .then(r => r.json())
             .then(data => {
                 data.forEach((item, index) => {
@@ -31,12 +31,12 @@
     <tr>
         <td>${index + 1}</td>
         <td>
-            <i class="fab fa-angular fa-lg text-danger me-3"></i><strong>${item.adminName}</strong>
+            <i class="fab fa-angular fa-lg text-danger me-3"></i><strong>${item.Title}</strong>
         </td>
-        <td><span>${item.Email}</span></td>
-        <td><span>${item.roleName}</span></td>
-        <td><span>${item.Active}</span></td>
-        <td><span>${item.Avatar}</span></td>
+        <td><span>${item.catName}</span></td>
+        <td><span>${item.adminName}</span></td>
+        <td><span>${item.CreatedDate}</span></td>
+        <td><span>${item.IsActive}</span></td>
         <td>
             <div class="dropdown">
                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -45,11 +45,11 @@
                 </button>
                 <div class="dropdown-menu">
                     <button class="dropdown-item" data-bs-toggle="modal"
-                            data-bs-target="#ModalEdit" onclick="sua(${item.adminID})">
+                            data-bs-target="#ModalEdit" onclick="sua(${item.postID})">
                             <i class="bx bx-edit-alt me-1"></i> Edit
                     </button>
                     <button class="dropdown-item" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal" onclick="xoa(${item.adminID})">
+                            data-bs-target="#exampleModal" onclick="xoa(${item.postID})">
                             <i class="bx bx-trash me-1"></i> Delete
                     </button>
                 </div>

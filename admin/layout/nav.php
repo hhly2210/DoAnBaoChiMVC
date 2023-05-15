@@ -78,7 +78,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="?action=logout" target="_blank">
+                        <a class="dropdown-item" href="/admin/logout.php" target="_blank">
                             <i class="bx bx-power-off me-2"></i>
                             <span class="align-middle">Đăng xuất</span>
                         </a>

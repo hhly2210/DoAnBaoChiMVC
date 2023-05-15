@@ -1,22 +1,17 @@
 <?php 
     class Session {
         public static function init(){
-            if (version_compare(phpversion(), '5.4.0', '<')) {
-            if (session_id() == '') {
+            if(session_id() == '' && isset($_COOKIE))
                 session_start();
-                }
-            }else {
-                if (session_status() == PHP_SESSION_NONE) {
-                    session_start();
-                }
-            }
         }
             
         public static function set($key, $val){
+            self::init();
             $_SESSION[$key] = $val;
         }
             
         public static function get($key){
+            self::init();
             if (isset($_SESSION[$key])) {
                 return $_SESSION[$key];
             }else 
@@ -25,9 +20,9 @@
             
         public static function checkSession(){
             self::init();
-            if (isset($_GET['action']) && $_GET['action'] == 'logout') {
-                Session::destroy();
-            }
+            // if (isset($_GET['action']) && $_GET['action'] == 'logout') {
+            //     Session::destroy();
+            // }
             if(self::get("adminlogin") == false) {
                 self::destroy();
                 header("Location:/admin/login.php");
@@ -37,11 +32,13 @@
         public static function checkLogin(){
             self::init();
             if(self::get("adminlogin") == true) {
-            header("Location:/admin/index.php");
+                header("Location:/admin/index.php");
             }
         }
         public static function destroy()
         {
+            self::init();
+            session_unset();
             session_destroy();
             header("Location:/admin/login.php");
         }

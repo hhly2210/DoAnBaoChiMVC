@@ -1,23 +1,26 @@
 <?php
-include_once '../classes/user.php';
+include_once '../classes/post.php';
 include_once '../../lib/session.php';
 
 Session::checkSession();
 
-$user = new user();
-$showUser = $user->show_user();
+$post = new post();
+$showPost = $post->show_post();
 
 $json = [];
 
-while ( $result = $showUser->fetch_assoc())
+while ($result = $showPost->fetch_assoc())
 {
     $tmp = array(
-        'adminID' => $result['adminID'],
-        'adminName' => $result['adminName'],
-        'Email' => $result['Email'],
-        'roleName' => $result['roleName'],
-        'Active' => $result['Active'],
-        'Avatar' => $result['Avatar']);
+        'postID' => $result['postID'],
+        'Title' => $result['Title'],
+        'Abstract' => $result['Abstract'],
+        'Contents' => $result['Contents'],
+        'Link' => $result['Link'],
+        'CreatedDate' => $result['CreatedDate'],
+        'IsActive' => $result['IsActive'],
+        'catName' => $result['catName'],
+        'adminName' => $result['adminName']);
     $json[] = $tmp;
 }
 

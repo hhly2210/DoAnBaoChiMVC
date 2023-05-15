@@ -1,3 +1,8 @@
+<?php
+    include_once __DIR__ . '/checkAllowUrl.php';
+    checkAllowUrl();
+?>
+
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"
       data-template="vertical-menu-template-free">
@@ -23,7 +28,6 @@ include __DIR__ . '/head.php';
                 <div class="container-xxl flex-grow-1 container-p-y">
                     <?php
                     global $content;
-
                     echo $content;
                     ?>
                 </div>

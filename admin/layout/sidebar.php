@@ -90,7 +90,7 @@
             </ul>
         </li>
         <li class="menu-item">
-            <a class="menu-link" href="?action=logout" target="_blank">
+            <a class="menu-link" href="/admin/logout.php" target="_blank">
                 <i class="menu-icon bx bx-power-off me-2"></i>
                 <div data-i18n="Basic">Đăng xuất</div>
             </a>
