@@ -40,7 +40,7 @@ class user
         $unique_image = '';
         list($hadFile, $file_temp, $unique_image, $uploaded_image) = $this->extracted();
 
-        if (!empty($adminName)) {
+        if (!empty($adminName) && !empty($adminUser) && !empty($adminPass) && !empty($roleID)) {
             if ($hadFile) move_uploaded_file($file_temp, $uploaded_image);
             $query = "INSERT INTO tbl_admin(adminName, Email, adminUser, adminPass, roleID, Active, Avatar) VALUES('$adminName', '$Email', '$adminUser', md5('$adminPass'), $roleID, $Active, '$unique_image')";
             $result = $this->db->insert($query);

@@ -23,6 +23,7 @@ include __DIR__ . '/head.php';
                 <div class="container-xxl flex-grow-1 container-p-y">
                     <?php
                     global $content;
+
                     echo $content;
                     ?>
                 </div>

@@ -21,41 +21,55 @@ class post
         $this->fm = new Format();
     }
 
-    public function insert_post($catName, $catDescription)
+    public function insert_post($Title, $Abstract, $Contents, $Images, $Link, $CreatedDate, $IsActive, $catID, $adminID)
     {
-        $catName = $this->fm->validation($catName);
-        $catDescription = $this->fm->validation($catDescription);
+        $Title = $this->fm->validation($Title);
+        $Abstract = $this->fm->validation($Abstract);
+        $Contents = $this->fm->validation($Contents);
+        $Images = $this->fm->validation($Images);
+        $Link = $this->fm->validation($Link);
+        $CreatedDate = $this->fm->validation($CreatedDate);
+        $IsActive = $this->fm->validation($IsActive);
+        $catID = $this->fm->validation($catID);
+        $adminID = $this->fm->validation($adminID);
 
-        $catName = mysqli_real_escape_string($this->db->link, $catName);
-        $catDescription = mysqli_real_escape_string($this->db->link, $catDescription);
-        if (!empty($catName)) {
-            $query = "INSERT INTO tbl_category(catName, catDescription) VALUES('$catName', '$catDescription')";
+        $Title = mysqli_real_escape_string($this->db->link, $Title);
+        $Abstract = mysqli_real_escape_string($this->db->link, $Abstract);
+        $Contents = mysqli_real_escape_string($this->db->link,$Contents);
+        $Images = mysqli_real_escape_string($this->db->link,$Images);
+        $Link = mysqli_real_escape_string($this->db->link,$Link);
+        $CreatedDate = mysqli_real_escape_string($this->db->link,$CreatedDate);
+        $IsActive = mysqli_real_escape_string($this->db->link,$IsActive);
+        $catID = mysqli_real_escape_string($this->db->link,$catID);
+        $adminID = mysqli_real_escape_string($this->db->link,$adminID);
+        if (!empty($Title)) {
+            $query = "INSERT INTO tbl_post(Title, Abstract ,Contents, Images, Link, CreatedDate, IsActive, catID, adminID) VALUES('$Title', '$Abstract', '$Contents', '$Images', '$Link', '$CreatedDate', '$IsActive', $catID, $adminID)";
             $result = $this->db->insert($query);
         }
     }
 
     public function show_post()
     {
-        $query = "SELECT * FROM tbl_category ORDER BY catID DESC";
+        $query = "SELECT * FROM tbl_post ORDER BY postID DESC";
         $result = $this->db->select($query);
         return $result;
     }
 
     public function show_post_one($id)
     {
-        $query = "SELECT * FROM tbl_category WHERE catID = $id";
+        $query = "SELECT * FROM tbl_post WHERE postID = $id";
         $result = $this->db->select($query);
         return $result;
     }
 
-    public function update_post($id, $catName, $catDescription)
+    public function update_post($id, $Title, $Abstract, $Contents, $Images, $Link, $CreatedDate, $IsActive, $catID, $adminID)
     {
-        $query = "update tbl_category set catName = '$catName', catDescription = '$catDescription' where catID = $id ";
+        $query = "update tbl_post set Title = '$Title', Abstract = '$Abstract', Contents = '$Contents', Images = '$Images', Link = '$Link', CreatedDate = '$CreatedDate', IsActive = '$IsActive', catID = '$catID', adminID = '$adminID' where postID = $id ";
         $result = $this->db->update($query);
         return $result;
     }
     public function delete_post($id){
-        $query = "delete from tbl_category where catID = $id";
+        $query = "delete from tbl_post where postID = $id";
         $result = $this->db->delete($query);
         return $result;
     }

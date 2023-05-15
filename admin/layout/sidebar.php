@@ -70,30 +70,24 @@
         ?>
 
         <!-- Quản lý tài khoản -->
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Account Management</span></li>
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Quản lý tài khoản</span></li>
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">Account Settings</div>
+                <i class="menu-icon tf-icons bx bxs-user"></i>
+                <div data-i18n="Account Settings">Cài đặt</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
                     <a href="#" class="menu-link">
-                        <div data-i18n="Account">Account</div>
+                        <div data-i18n="Account">Thông tin tài khoản</div>
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="#" class="menu-link">
-                        <div data-i18n="Basic">Forgot Password</div>
+                        <div data-i18n="Basic">Đổi mật khẩu</div>
                     </a>
                 </li>
             </ul>
-        </li>
-        <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-                <div data-i18n="Authentications">Authentications</div>
-            </a>
         </li>
         <li class="menu-item">
             <a class="menu-link" href="?action=logout" target="_blank">

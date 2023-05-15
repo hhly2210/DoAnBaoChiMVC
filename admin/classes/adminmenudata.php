@@ -17,36 +17,6 @@ class adminmenudata
         $this->fm = new Format();
     }
 
-    public function menu_admin($adminUser, $adminPass)
-    {
-        $adminUser = $this->fm->validation($adminUser);
-        $adminPass = $this->fm->validation($adminPass);
-
-        $adminUser = mysqli_real_escape_string($this->db->link, $adminUser);
-        $adminPass = mysqli_real_escape_string($this->db->link, $adminPass);
-
-        if (empty($adminUser) || empty($adminPass)) {
-            $alert = "Tên người dùng và mật khẩu không được để trống";
-            return $alert;
-        } else {
-            $query = "SELECT * FROM tbl_admin WHERE adminUser = '$adminUser' AND adminPass = '$adminPass' LIMIT 1";
-            $result = $this->db->select($query);
-            if ($result != false) {
-                $value = $result->fetch_assoc();
-                Session::set('adminlogin', true);
-                Session::set('adminID', $value['adminID']);
-                Session::set('adminUser', $value['adminUser']);
-                Session::set('adminName', $value['adminName']);
-                Session::set('Avatar', $value['Avatar']);
-                header('Location:index.php');
-            } else {
-                $alert = "Tài khoản hoặc mật khẩu không đúng";
-                return $alert;
-            }
-        }
-
-    }
-
     public function insert_admin_menu($adminMenuName, $ParentLevel, $MenuOrder, $MenuTarget, $Icon, $Link, $IdName, $IsActive, $ClassName)
     {
         $adminMenuName = $this->fm->validation($adminMenuName);
@@ -125,7 +95,7 @@ class adminmenudata
         return $result;
     }
 
-    public function update_admin_menu($id, $adminMenuName, $MenuLevel, $ParentLevel, $MenuOrder, $MenuTarget, $Icon, $Link, $IdName, $IsActive)
+    public function update_admin_menu($id, $adminMenuName, $ParentLevel, $MenuOrder, $MenuTarget, $Icon, $Link, $IdName, $IsActive)
     {
         $query = "update tbl_adminmenu set adminMenuName = '$adminMenuName', ParentLevel = '$ParentLevel', MenuOrder = '$MenuOrder', MenuTarget = '$MenuTarget', Icon = '$Icon', Link = '$Link', IdName = '$IdName', IsActive = '$IsActive' where adminMenuID = $id ";
         $result = $this->db->update($query);
