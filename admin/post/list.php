@@ -6,7 +6,7 @@ ob_start();
 
 
 <?php
-include_once '../classes/category.php';
+include_once '../classes/post.php';
 
 // View thêm thể loại
 include_once 'addform.php';

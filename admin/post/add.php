@@ -1,6 +1,6 @@
 <?php
-include_once '../classes/user.php';
-$user = new user();
+include_once '../classes/post.php';
+$post = new post();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $adminName = $_POST['adminName'];
     $Email = $_POST['Email'];
@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $roleID = $_POST['roleID'];
     $Active = $_POST['Active'];
     $Avatar = $_POST['Avatar'];
-    $insertUser = $user->insert_user($adminName, $Email, $adminUser, $adminPass, $roleID, $Active, $Avatar);
+    // $insertPost = $post->insert_post();
     http_response_code(200);
     die();
 }

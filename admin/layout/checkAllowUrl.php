@@ -2,8 +2,7 @@
 include_once __DIR__ . '/../../lib/session.php';
 function checkAllowUrl()
 {
-	session_start();
-	$allowUrls = array("/admin/login.php", "/admin/logout.php", "/admin/index.php");
+	$allowUrls = array("/admin/login.php", "/admin/logout.php", "/admin/index.php", "/admin/settings/changePassword.php", "/admin/settings/accountInformation.php");
 	$url = $_SERVER['REQUEST_URI'];
 	if (!kiemTra($url, $allowUrls)) {
 		$roleId = Session::get('roleID');

@@ -78,12 +78,12 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="#" class="menu-link">
+                    <a href="/admin/settings/accountInformation.php" class="menu-link">
                         <div data-i18n="Account">Thông tin tài khoản</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="#" class="menu-link">
+                    <a href="/admin/settings/changePassword.php" class="menu-link">
                         <div data-i18n="Basic">Đổi mật khẩu</div>
                     </a>
                 </li>

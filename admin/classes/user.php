@@ -91,6 +91,12 @@ class user
         $result = $this->db->update($query);
         return $result;
     }
+    public function update_pass($id, $pass)
+    {
+        $query = "update tbl_admin set adminPass = md5('$pass') where adminID = $id ";
+        $result = $this->db->update($query);
+        return $result;
+    }
 
     public function delete_user($id)
     {

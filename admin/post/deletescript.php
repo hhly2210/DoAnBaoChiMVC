@@ -1,8 +1,8 @@
 <script>
     function xoa(id) {
-        fetch("/admin/user/delete.php", {
+        fetch("/admin/post/delete.php", {
             method: "POST",
-            body: JSON.stringify({adminID: id}),
+            body: JSON.stringify({postID: id}),
         })
             .then(result => {
                 let table = document.getElementById('user-list')
