@@ -29,12 +29,12 @@ ob_start();
                         <div class="d-flex align-items-start align-items-sm-center gap-4">
 <!--                                src="/admin/resource/assets/img/avatars/--><?php //echo Session::get('Avatar'); ?><!--"-->
                             <img
-                                src="/admin/resource/assets/img/avatars/1.png"
                                 alt="user-avatar"
                                 class="d-block rounded"
                                 height="100"
                                 width="100"
                                 id="uploadedAvatar"
+                                src="/admin/resource/assets/img/avatars/1.png"
                             />
                             <div class="button-wrapper">
                                 <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">

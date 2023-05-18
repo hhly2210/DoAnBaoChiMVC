@@ -44,14 +44,13 @@
                     <i class="bx bx-dots-vertical-rounded"></i>
                 </button>
                 <div class="dropdown-menu">
-                    <button class="dropdown-item" data-bs-toggle="modal"
-                            data-bs-target="#ModalEdit" onclick="sua(${item.postID})">
+                    <a href="editform.php" class="dropdown-item" onclick="sua(${item.postID})">
                             <i class="bx bx-edit-alt me-1"></i> Edit
-                    </button>
-                    <button class="dropdown-item" data-bs-toggle="modal"
+                    </a>
+                    <a class="dropdown-item" data-bs-toggle="modal"
                             data-bs-target="#exampleModal" onclick="xoa(${item.postID})">
                             <i class="bx bx-trash me-1"></i> Delete
-                    </button>
+                    </a>
                 </div>
             </div>
         </td>

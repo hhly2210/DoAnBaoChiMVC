@@ -124,16 +124,16 @@ class elFinderSession implements elFinderSessionInterface
     {
         set_error_handler(array($this, 'session_start_error'), E_NOTICE | E_WARNING);
 
-        // apache2 SAPI has a bug of session cookie register
-        // see https://bugs.php.net/bug.php?id=75554
-        // see https://github.com/php/php-src/pull/3231
-        if ($this->fixCookieRegist === true) {
-            if ((int)ini_get('session.use_cookies') === 1) {
-                if (ini_set('session.use_cookies', 0) === false) {
-                    $this->fixCookieRegist = false;
-                }
-            }
-        }
+        // // apache2 SAPI has a bug of session cookie register
+        // // see https://bugs.php.net/bug.php?id=75554
+        // // see https://github.com/php/php-src/pull/3231
+        // if ($this->fixCookieRegist === true) {
+        //     if ((int)ini_get('session.use_cookies') === 1) {
+        //         if (ini_set('session.use_cookies', 0) === false) {
+        //             $this->fixCookieRegist = false;
+        //         }
+        //     }
+        // }
 
         if (version_compare(PHP_VERSION, '5.4.0', '>=')) {
             if (session_status() !== PHP_SESSION_ACTIVE) {

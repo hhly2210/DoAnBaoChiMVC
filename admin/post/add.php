@@ -1,15 +1,15 @@
 <?php
 include_once '../classes/post.php';
+include_once '../../lib/session.php';
 $post = new post();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $adminName = $_POST['adminName'];
-    $Email = $_POST['Email'];
-    $adminUser = $_POST['adminUser'];
-    $adminPass = $_POST['adminPass'];
-    $roleID = $_POST['roleID'];
-    $Active = $_POST['Active'];
-    $Avatar = $_POST['Avatar'];
-    // $insertPost = $post->insert_post();
+    $Title = $_POST['Title'];
+    $Abstract = $_POST['Abstract'];
+    $Contents = $_POST['Contents'];
+    $Images = $_POST['Images'];
+    $catID = $_POST['catID'];
+    $adminID = Session::get('adminID');
+    $insertPost = $post->insert_post($Title, $Abstract, $Contents, $Images, $catID, $adminID);
     http_response_code(200);
     die();
 }

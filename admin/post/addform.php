@@ -13,6 +13,7 @@ include_once '../classes/post.php';
     <!-- Thêm người dùng -->
     <div class="card-body">
         <form id="add-form" class="bg-light" enctype="multipart/form-data">
+            <!-- ID tác giả -->
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="add-Title">Tiêu đề bài viết</label>
                 <div class="col-sm-10">
@@ -28,25 +29,24 @@ include_once '../classes/post.php';
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="add-catName" class="col-sm-2 col-form-label">Thể loại:</label>
+                <label for="add-catID" class="col-sm-2 col-form-label">Thể loại:</label>
                 <div class="col-sm-10">
-                    <select class="select2 form-select" name="catName" id="add-catName">
-                        <!-- <option value="" disabled selected hidden>Chọn chức vụ</option> -->
-                    </select>
+                    <select class="select2 form-select" name="catID" id="add-catID"></select>
                 </div>
             </div>
-            <div class="row mb-3">
+            <!-- <div class="row mb-3">
                 <div class="col-md-2"></div>
                 <div class="col-sm-10">
                     <label class="form-check-label" for="IsActive"> Trạng thái </label>
                     <input class="form-check-input" type="checkbox" name="IsActive" id="IsActive" checked />
                 </div>
-            </div>
+            </div> -->
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="Images">Ảnh tiêu đề bài viết</label>
                 <div class="col-sm-10">
                     <div class="input-group input-group-merge">
-                        <input class="form-control" type="file" name="Images" id="Images" onclick="" />
+                        <button class="btn btn-outline-primary" type="button" id="button-addon1" onclick="elfinderDialog2('#Images')">Thêm ảnh</button>
+                        <input class="form-control" type="text" name="Images" id="Images" />
                     </div>
                 </div>
 
@@ -99,8 +99,8 @@ include_once '../classes/post.php';
 
         document.querySelector('#add-form button[type=submit]').addEventListener('click', e => {
             e.preventDefault()
-            if (document.getElementById('adminName').value.length !== 0 && document.getElementById('adminUser').value.length !== 0 &&
-                document.getElementById('adminPass').value.length !== 0 && document.getElementById('Active').value.length !== 0)
+            if (document.getElementById('add-Title').value.length !== 0 && document.getElementById('add-Abstract').value.length !== 0 &&
+                document.getElementById('summernote').value.length !== 0 && document.getElementById('add-catID').value.length !== 0)
                 submit()
             else {
                 let thongBao = document.getElementById('$idscript');
@@ -119,6 +119,24 @@ include_once '../classes/post.php';
                 dom.classList.add('d-none')
             }, 3456);
         }
+
+        function cap_nhat_danh_sach_theloai() {
+            let selectCat = document.getElementById('add-form').elements.catID;
+            fetch('/admin/category/getAll.php')
+                .then(res => {
+                    if (res.status === 200) {
+                        res.json().then(obj => {
+                            obj.forEach(item => {
+                                let option = document.createElement('option')
+                                option.value = item.catID
+                                option.text = item.catName
+                                selectCat.add(option)
+                            })
+                        })
+                    }
+                })
+        }
+        cap_nhat_danh_sach_theloai();
     </script>
 </div>
 <!--/ Bootstrap Dark Table -->
@@ -131,12 +149,13 @@ include_once '../classes/post.php';
 $content = ob_get_clean();
 ob_start();
 ?>
+<script src="/admin/Summernote/elfinderext.js"></script>
 
 <script>
     $('#summernote').summernote({
         minHeight: 300,
         toolbar: [
-            ['insert', ['elfinder', 'picture', 'link', 'video']],
+            ['insert', ['link', 'picture', 'elfinder', 'hr']],
             ['style', ['bold', 'italic', 'underline', 'clear']],
             ['font', ['strikethrough', 'superscript', 'subscript']],
             ['color', ['color']],
@@ -144,31 +163,54 @@ ob_start();
             ['height', ['height']],
             ['table', ['table']],
             ['view', ['codeview']],
-        ],
-        popover: {
-            image: [
-                ['custom', ['elfinder']],
-                ['imagesize', ['imageSize100', 'imageSize50', 'imageSize25']],
-                ['float', ['floatLeft', 'floatRight', 'floatNone']],
-                ['remove', ['removeMedia']],
-            ],
-        },
-        callbacks: {
-            onInit: function() {
-                $('button.note-btn.btn.btn-light.btn-sm.note-elfinder-btn').find('i').addClass('note-icon-picture');
-            },
-        },
-        elfinder: {
-            url: '/admin/Summernote/elFinder/php/connector.minimal.php',
-            height: 500,
-        },
+        ]
     });
+
+    function elfinderDialog(context) {
+        var fm = $("<div/>")
+            .dialogelfinder({
+                url: "/admin/Summernote/elFinder/php/connector.minimal.php",
+                lang: "en",
+                width: 840,
+                height: 450,
+                destroyOnClose: true,
+                getFileCallback: function(file, fm) {
+                    context.invoke("editor.insertImage", fm.convAbsUrl(file.url));
+                },
+                commandsOptions: {
+                    getfile: {
+                        oncomplete: "close",
+                        folders: false,
+                    },
+                },
+            })
+            .dialogelfinder("instance");
+    }
+
+    function elfinderDialog2(id) {
+        let context = document.querySelector(id)
+        var fm = $("<div/>")
+            .dialogelfinder({
+                url: "/admin/Summernote/elFinder/php/connector.minimal.php",
+                lang: "en",
+                width: 840,
+                height: 450,
+                destroyOnClose: true,
+                getFileCallback: function(file, fm) {
+                    context.value = file.url;
+                },
+                commandsOptions: {
+                    getfile: {
+                        oncomplete: "close",
+                        folders: false,
+                    },
+                },
+            })
+            .dialogelfinder("instance");
+    }
 </script>
 
 <?php
 $scripts = ob_get_clean();
 include_once '../layout/template.php';
-?>
-<?php
-$idscript = "n" . strval(random_int(0, 99));
 ?>

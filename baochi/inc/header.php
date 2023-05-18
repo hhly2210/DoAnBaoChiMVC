@@ -1,3 +1,12 @@
+<?php
+include_once __DIR__ . '/../../lib/session.php';
+Session::init();
+header("Cache-Control: no-cache, must-revalidate");
+header("Pragma: no-cache");
+header("Expires: Sat, 26 Jul 1997 05:00:00 GAT");
+header("Cache-Control: max-age = 10800");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,9 +85,7 @@
                             </div>
                             <!-- Icon login -->
                             <div class = "form-submit">
-                                <button type="submit" class="btn btn-primary" href="./admin/sign-in.php">
-                                    <i class="fas fa-sign-in-alt ml-2"></i> Đăng nhập
-                                </button>
+                                <a class="btn btn-primary" href="/admin/login.php"><i class="fas fa-sign-in-alt ml-2"></i> Đăng nhập</a>
                             </div>
                         </div>
                     </nav>

@@ -1,8 +1,9 @@
 <?php 
     class Session {
         public static function init(){
-            if(session_id() == '' && isset($_COOKIE))
+            if (session_status() == PHP_SESSION_NONE) {
                 session_start();
+            }
         }
             
         public static function set($key, $val){

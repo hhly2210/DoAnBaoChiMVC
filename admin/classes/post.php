@@ -21,15 +21,12 @@ class post
         $this->fm = new Format();
     }
 
-    public function insert_post($Title, $Abstract, $Contents, $Images, $Link, $CreatedDate, $IsActive, $catID, $adminID)
+    public function insert_post($Title, $Abstract, $Contents, $Images, $catID, $adminID)
     {
         $Title = $this->fm->validation($Title);
         $Abstract = $this->fm->validation($Abstract);
         $Contents = $this->fm->validation($Contents);
         $Images = $this->fm->validation($Images);
-        $Link = $this->fm->validation($Link);
-        $CreatedDate = $this->fm->validation($CreatedDate);
-        $IsActive = $this->fm->validation($IsActive);
         $catID = $this->fm->validation($catID);
         $adminID = $this->fm->validation($adminID);
 
@@ -37,13 +34,10 @@ class post
         $Abstract = mysqli_real_escape_string($this->db->link, $Abstract);
         $Contents = mysqli_real_escape_string($this->db->link,$Contents);
         $Images = mysqli_real_escape_string($this->db->link,$Images);
-        $Link = mysqli_real_escape_string($this->db->link,$Link);
-        $CreatedDate = mysqli_real_escape_string($this->db->link,$CreatedDate);
-        $IsActive = mysqli_real_escape_string($this->db->link,$IsActive);
         $catID = mysqli_real_escape_string($this->db->link,$catID);
         $adminID = mysqli_real_escape_string($this->db->link,$adminID);
-        if (!empty($Title)) {
-            $query = "INSERT INTO tbl_post(Title, Abstract ,Contents, Images, Link, CreatedDate, IsActive, catID, adminID) VALUES('$Title', '$Abstract', '$Contents', '$Images', '$Link', '$CreatedDate', '$IsActive', $catID, $adminID)";
+        if (!empty($Title) || !empty($Abstract) || !empty($Contents) || !empty($catID) || !empty($adminID)) {
+            $query = "INSERT INTO tbl_post(Title, Abstract ,Contents, Images, catID, adminID) VALUES('$Title', '$Abstract', '$Contents', '$Images', $catID, $adminID)";
             $result = $this->db->insert($query);
         }
     }
