@@ -1,7 +1,7 @@
 name: 'Handle new issue comment'
 on:
   issue_comment:
-    types: [created]
+    types: [ created ]
 
 jobs:
   handle_new_issue_comment:

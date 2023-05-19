@@ -26,5 +26,5 @@
 
 <?php
 if (isset($scripts))
-	echo $scripts;
+    echo $scripts;
 ?>

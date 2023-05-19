@@ -85,7 +85,7 @@ header("Cache-Control: max-age = 10800");
                             </div>
                             <!-- Icon login -->
                             <div class = "form-submit">
-                                <a class="btn btn-primary" href="/admin/login.php"><i class="fas fa-sign-in-alt ml-2"></i> Đăng nhập</a>
+                                <a class="btn btn-primary" href="/admin/page/login.php"><i class="fas fa-sign-in-alt ml-2"></i> Đăng nhập</a>
                             </div>
                         </div>
                     </nav>

@@ -5052,7 +5052,7 @@ var elFinder = function(elm, opts, bootCallback) {
 		self.nonameDateFormat = (self.options.nonameDateFormat || i18n.nonameDateFormat).replace(/[\/\\]/g, '_');
 
 		/**
-		 * Css classes 
+		 * Css context
 		 *
 		 * @type String
 		 **/
@@ -8937,7 +8937,7 @@ elFinder.prototype = {
 	},
 	
 	/**
-	 * Convert mimetype into css classes
+	 * Convert mimetype into css context
 	 * 
 	 * @param  String  file mimetype
 	 * @return String
@@ -22250,7 +22250,7 @@ $.fn.elfindertree = function(fm, opts) {
 			},
 			
 			/**
-			 * Check required folders for subfolders and update arrow classes
+			 * Check required folders for subfolders and update arrow context
 			 *
 			 * @param  Array  folders to check
 			 * @param  String css class 

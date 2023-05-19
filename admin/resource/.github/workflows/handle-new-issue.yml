@@ -1,7 +1,7 @@
 name: 'Handle new issue'
 on:
   issues:
-    types: [opened]
+    types: [ opened ]
 
 jobs:
   handle_new_issue:
