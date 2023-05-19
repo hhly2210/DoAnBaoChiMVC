@@ -18,8 +18,8 @@ include_once '../classes/post.php';
     <div class="card box round first grid">
         <h5 class="card-header">Các bài viết đã đăng</h5>
         <div class="table-responsive text-nowrap">
-            <?php include_once './JsTable.php';
-            include_once './deletescript.php'; ?>
+            <?php include_once './component/JsTable.php';
+            include_once './component/deletescript.php'; ?>
         </div>
     </div>
 </div>

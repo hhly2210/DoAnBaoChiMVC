@@ -1,6 +1,6 @@
 <script>
     function xoa(id) {
-        fetch("/admin/post/delete.php", {
+        fetch("/admin/post/api/delete.php", {
             method: "POST",
             body: JSON.stringify({postID: id}),
         })

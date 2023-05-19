@@ -1,14 +1,14 @@
 <table id="post-list" class="table table-dark">
     <thead>
-    <tr>
-        <th>STT</th>
-        <th>Tiêu đề</th>
-        <th>Thể loại</th>
-        <th>Tác giả</th>
-        <th>Ngày viết bài</th>
-        <th>Trạng thái</th>
-        <th>Sửa/Xoá</th>
-    </tr>
+        <tr>
+            <th>STT</th>
+            <th>Tiêu đề</th>
+            <th>Thể loại</th>
+            <th>Tác giả</th>
+            <th>Ngày viết bài</th>
+            <th>Trạng thái</th>
+            <th>Sửa/Xoá</th>
+        </tr>
     </thead>
     <tbody class="table-border-bottom-0">
     </tbody>
@@ -17,13 +17,13 @@
 <script>
     function napLaiTable() {
         let table = document.getElementById('post-list')
-        table.tBodies[0].innerHTML= "";
+        table.tBodies[0].innerHTML = "";
         showTable();
     }
-    
+
     function showTable() {
         let table = document.getElementById('post-list')
-        fetch('/admin/post/getAll.php')
+        fetch('/admin/post/api/getAll.php')
             .then(r => r.json())
             .then(data => {
                 data.forEach((item, index) => {
@@ -56,7 +56,7 @@
         </td>
     </tr>
 `
-                    table.tBodies[0].innerHTML+= noiDung
+                    table.tBodies[0].innerHTML += noiDung
                 })
             })
     }

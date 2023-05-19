@@ -15,23 +15,23 @@ include_once '../classes/post.php';
     <div class="card-body">
         <form id="edit-form" action="edit.php" method="POST"  enctype="multipart/form-data">
             <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="add-Title">Tiêu đề bài viết</label>
+                <label class="col-sm-2 col-form-label" for="edit-Title">Tiêu đề bài viết</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="Title" id="add-Title" placeholder="Nhập vào đây👉👈" required />
+                    <input type="text" class="form-control" name="Title" id="edit-Title" placeholder="Nhập vào đây👉👈" required />
                 </div>
             </div>
             <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="add-Abstract">Tóm tắt bài viết</label>
+                <label class="col-sm-2 col-form-label" for="edit-Abstract">Tóm tắt bài viết</label>
                 <div class="col-sm-10">
                     <div class="input-group input-group-merge">
-                        <input type="text" name="Abstract" id="add-Abstract" class="form-control" />
+                        <input type="text" name="Abstract" id="edit-Abstract" class="form-control" />
                     </div>
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="add-catID" class="col-sm-2 col-form-label">Thể loại:</label>
+                <label for="edit-catID" class="col-sm-2 col-form-label">Thể loại:</label>
                 <div class="col-sm-10">
-                    <select class="select2 form-select" name="catID" id="add-catID"></select>
+                    <select class="select2 form-select" name="catID" id="edit-catID"></select>
                 </div>
             </div>
             <div class="row mb-3">
@@ -69,8 +69,6 @@ include_once '../classes/post.php';
     </div>
 
 
-
-
     <div id='$idscript' class='alert alert-dismissible d-none fade'>
         <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
         <span class="noi-dung"></span>
@@ -78,10 +76,10 @@ include_once '../classes/post.php';
 
     <script>
         function submit() {
-            let form = document.getElementById('add-form')
+            let form = document.getElementById('edit-form')
             let thongBao = document.getElementById('$idscript');
             thongBao.noiDung = thongBao.querySelector('.noi-dung')
-            fetch('/admin/post/add.php', {
+            fetch('/admin/post/api/edit.php', {
                     method: 'POST',
                     body: new FormData(form)
                 })
@@ -100,10 +98,10 @@ include_once '../classes/post.php';
                 })
         }
 
-        document.querySelector('#add-form button[type=submit]').addEventListener('click', e => {
+        document.querySelector('#edit-form button[type=submit]').addEventListener('click', e => {
             e.preventDefault()
-            if (document.getElementById('add-Title').value.length !== 0 && document.getElementById('add-Abstract').value.length !== 0 &&
-                document.getElementById('summernote').value.length !== 0 && document.getElementById('add-catID').value.length !== 0)
+            if (document.getElementById('edit-Title').value.length !== 0 && document.getElementById('edit-Abstract').value.length !== 0 &&
+                document.getElementById('summernote').value.length !== 0 && document.getElementById('edit-catID').value.length !== 0)
                 submit()
             else {
                 let thongBao = document.getElementById('$idscript');
@@ -124,7 +122,7 @@ include_once '../classes/post.php';
         }
 
         function cap_nhat_danh_sach_theloai() {
-            let selectCat = document.getElementById('add-form').elements.catID;
+            let selectCat = document.getElementById('edit-form').elements.catID;
             fetch('/admin/category/getAll.php')
                 .then(res => {
                     if (res.status === 200) {
@@ -142,8 +140,6 @@ include_once '../classes/post.php';
         cap_nhat_danh_sach_theloai();
     </script>
 </div>
-<!--/ Bootstrap Dark Table -->
-<?php include_once 'editform.php' ?>
 <!-- / Content -->
 
 

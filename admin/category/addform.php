@@ -14,6 +14,7 @@ $idscript = "n" . strval(random_int(0, 99));
                 </button>
             </div>
             <div class="card-body p-0">
+            <!-- <div class="card form-wrapper"> -->
                 <div class="card form-wrapper d-none">
                     <div class="card-body">
                         <form id="add-form" class="bg-light">

@@ -1,8 +1,7 @@
 <?php
+include_once '../classes/post.php';
 ob_start();
 $idscript = "n" . strval(random_int(0, 99));
-// Đoạn mã HTML và PHP của bạn ở đây
-include_once '../classes/post.php';
 ?>
 <!-- <hr class="my-5" /> -->
 <div class="card box round first grid">
@@ -78,7 +77,7 @@ include_once '../classes/post.php';
             let form = document.getElementById('add-form')
             let thongBao = document.getElementById('$idscript');
             thongBao.noiDung = thongBao.querySelector('.noi-dung')
-            fetch('/admin/post/add.php', {
+            fetch('/admin/post/api/add.php', {
                     method: 'POST',
                     body: new FormData(form)
                 })
@@ -140,7 +139,6 @@ include_once '../classes/post.php';
     </script>
 </div>
 <!--/ Bootstrap Dark Table -->
-<?php include_once 'editform.php' ?>
 <!-- / Content -->
 
 

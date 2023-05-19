@@ -21,17 +21,22 @@ include_once 'addform.php';
         <h5 class="card-header">Danh sách người dùng</h5>
         <div class="table-responsive text-nowrap">
             <?php include_once './JsTable.php';
-                include_once './deletescript.php'; ?>
+            include_once './deletescript.php'; ?>
         </div>
     </div>
 </div>
 <!--/ Bootstrap Dark Table -->
-<?php include_once 'editform.php'?>
+<?php include_once 'editform.php' ?>
 <!-- / Content -->
 
 
 <!-- Kết thúc đoạn mã HTML -->
 <?php
 $content = ob_get_clean();
+ob_start();
+?>
+<script src="/admin/js/chucnanganhienbutton.js"></script>
+<?php
+$scripts = ob_get_clean();
 include_once '../layout/template.php';
 ?>

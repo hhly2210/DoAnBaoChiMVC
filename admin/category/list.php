@@ -33,5 +33,10 @@ include_once 'addform.php';
 <!-- Kết thúc đoạn mã HTML -->
 <?php
 $content = ob_get_clean();
+ob_start();
+?>
+<script src="/admin/js/chucnanganhienbutton.js"></script>
+<?php
+$scripts = ob_get_clean();
 include_once '../layout/template.php';
 ?>

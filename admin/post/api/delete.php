@@ -1,5 +1,5 @@
 <?php
-include '../classes/post.php';
+include_once __DIR__ . '/../../classes/post.php';
 $post = new post();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $inputJSON = file_get_contents('php://input');

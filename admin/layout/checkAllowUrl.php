@@ -10,7 +10,7 @@ function checkAllowUrl()
 		if ($roleId == false || $roleId != 1) {
 			$userUrl = Session::get('urls');
 			if (!$userUrl || !kiemTra($url, $userUrl)) {
-				//header('Location: /admin/pages-403.php');
+				header('Location: /admin/pages-403.php');
 				die();
 			}
 		}

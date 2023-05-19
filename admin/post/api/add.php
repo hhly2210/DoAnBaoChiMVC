@@ -1,6 +1,6 @@
 <?php
-include_once '../classes/post.php';
-include_once '../../lib/session.php';
+include_once __DIR__ . '/../../classes/post.php';
+include_once __DIR__ . '/../../../lib/session.php';
 $post = new post();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $Title = $_POST['Title'];

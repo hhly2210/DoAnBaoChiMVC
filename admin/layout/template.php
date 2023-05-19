@@ -21,7 +21,7 @@ include __DIR__ . '/head.php';
             <?php
             include __DIR__ . '/nav.php';
             ?>
-
+            
             <!-- Content wrapper -->
             <div class="content-wrapper">
                 <!-- Content -->
