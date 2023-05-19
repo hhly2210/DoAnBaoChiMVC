@@ -26,14 +26,14 @@
             // }
             if(self::get("adminlogin") == false) {
                 self::destroy();
-                header("Location:/admin/login.php");
+                header("Location:/admin/page/login.php");
                 die();
             }
         }
         public static function checkLogin(){
             self::init();
             if(self::get("adminlogin") == true) {
-                header("Location:/admin/index.php");
+                header("Location:/admin/page/index.php");
             }
         }
         public static function destroy()
@@ -41,7 +41,7 @@
             self::init();
             session_unset();
             session_destroy();
-            header("Location:/admin/login.php");
+            header("Location:/admin/page/login.php");
         }
               
 }

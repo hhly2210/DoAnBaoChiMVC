@@ -1,6 +1,6 @@
 <?php
-include_once '../context/category.php';
-include_once '../../lib/session.php';
+include_once __DIR__ . '/../../context/category.php';
+include_once __DIR__ . '/../../../lib/session.php';
 
 Session::checkSession();
 
@@ -13,7 +13,8 @@ while ($result = $showCate->fetch_assoc()) {
     $tmp = array(
         'catID' => $result['catID'],
         'catName' => $result['catName'],
-        'catDescription' => $result['catDescription']);
+        'catDescription' => $result['catDescription']
+    );
     $json[] = $tmp;
 }
 

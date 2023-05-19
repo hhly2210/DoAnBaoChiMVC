@@ -1,6 +1,6 @@
 <?php
 
-include '../context/user.php';
+include __DIR__ . '/../../context/user.php';
 $user = new user();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['adminID'];

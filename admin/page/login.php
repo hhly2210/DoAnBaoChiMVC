@@ -1,6 +1,6 @@
 <?php
-include_once __DIR__ . '/../lib/session.php';
-include_once './context/adminlogin.php';
+include_once __DIR__ . '/../../lib/session.php';
+include_once __DIR__ . '/../context/adminlogin.php';
 Session::checkLogin();
 $class = new adminlogin();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

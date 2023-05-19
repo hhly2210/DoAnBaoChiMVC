@@ -60,7 +60,7 @@
 		let form = document.getElementById('edit-form')
 		form.elements.adminPass.value = ''
 		form.elements.adminID.value = id
-		fetch('/admin/user/get.php?adminID=' + id)
+		fetch('/admin/api/user/get.php?adminID=' + id)
 			.then(res => {
 				if (res.status === 200) {
 					res.json().then(obj => {
@@ -85,7 +85,7 @@
 		else
 			formData.append('Active', '0')
 
-		fetch('/admin/user/edit.php', {
+		fetch('/admin/api/user/edit.php', {
 			method: 'POST',
 			body: formData
 		}).then(res => {
@@ -98,7 +98,7 @@
 
 	function cap_nhat_danh_sach_role () {
 		let selectRole = document.getElementById('edit-form').elements.roleID
-		fetch('/admin/role/getAll.php')
+		fetch('/admin/api/role/getAll.php')
 			.then(res => {
 				if (res.status === 200) {
 					res.json().then(obj => {

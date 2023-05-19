@@ -1,5 +1,4 @@
 <?php
-include_once '../context/post.php';
 ob_start();
 $idscript = "n" . strval(random_int(0, 99));
 ?>
@@ -80,7 +79,7 @@ $idscript = "n" . strval(random_int(0, 99));
 				let form = document.getElementById('add-form')
 				let thongBao = document.getElementById('$idscript')
 				thongBao.noiDung = thongBao.querySelector('.noi-dung')
-				fetch('/admin/post/api/add.php', {
+				fetch('/admin/api/post/add.php', {
 					method: 'POST',
 					body: new FormData(form)
 				})
@@ -124,7 +123,7 @@ $idscript = "n" . strval(random_int(0, 99));
 
 			function cap_nhat_danh_sach_theloai () {
 				let selectCat = document.getElementById('add-form').elements.catID
-				fetch('/admin/category/getAll.php')
+				fetch('/admin/api/category/getAll.php')
 					.then(res => {
 						if (res.status === 200) {
 							res.json().then(obj => {
@@ -214,5 +213,5 @@ ob_start();
 
 <?php
 $scripts = ob_get_clean();
-include_once '../layout/template.php';
+include_once __DIR__ .'/../../layout/template.php';
 ?>

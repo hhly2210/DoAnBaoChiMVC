@@ -6,7 +6,7 @@ ob_start();
 	<!-- Content -->
 	<div class="container-xxl flex-grow-1 container-p-y">
         <?php
-        include_once __DIR__ . '/layout/content_tam.php';
+        include_once __DIR__ . '/../layout/content_tam.php';
         ?>
 	</div>
 
@@ -15,5 +15,5 @@ ob_start();
 
 <?php
 $content = ob_get_clean();
-include_once __DIR__ . '/layout/template.php';
+include_once __DIR__ . '/../layout/template.php';
 ?>

@@ -43,6 +43,29 @@ class post
         $query = "SELECT tbl_post.*, tbad.adminName, cat.catName FROM tbl_post
     LEFT JOIN tbl_admin tbad on tbl_post.adminID = tbad.adminID
     LEFT JOIN tbl_category cat on tbl_post.catID = cat.catID
+    WHERE tbl_post.IsActive = 1
+    ORDER BY postID DESC";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
+    public function show_user_post($id)
+    {
+        $query = "SELECT tbl_post.*, tbad.adminName, cat.catName FROM tbl_post
+    LEFT JOIN tbl_admin tbad on tbl_post.adminID = tbad.adminID
+    LEFT JOIN tbl_category cat on tbl_post.catID = cat.catID
+    WHERE tbl_post.adminID = $id
+    ORDER BY postID DESC";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
+    public function show_waiting_post()
+    {
+        $query = "SELECT tbl_post.*, tbad.adminName, cat.catName FROM tbl_post
+    LEFT JOIN tbl_admin tbad on tbl_post.adminID = tbad.adminID
+    LEFT JOIN tbl_category cat on tbl_post.catID = cat.catID
+    WHERE tbl_post.IsActive IS NULL
     ORDER BY postID DESC";
         $result = $this->db->select($query);
         return $result;

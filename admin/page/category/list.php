@@ -6,7 +6,7 @@ ob_start();
 
 
 <?php
-include_once '../context/category.php';
+include_once '../../context/category.php';
 
 // View thêm thể loại
 include_once 'addform.php';
@@ -20,8 +20,8 @@ include_once 'addform.php';
 		<div class="card box round first grid">
 			<h5 class="card-header">Danh sách thể loại</h5>
 			<div class="table-responsive text-nowrap">
-                <?php include_once './JsTable.php';
-                include_once './deletescript.php'; ?>
+                <?php include_once './component/JsTable.php';
+                include_once './component/deletescript.php'; ?>
 			</div>
 		</div>
 	</div>
@@ -38,5 +38,5 @@ ob_start();
 	<script src="/admin/js/chucnanganhienbutton.js"></script>
 <?php
 $scripts = ob_get_clean();
-include_once '../layout/template.php';
+include_once __DIR__ . '/../../layout/template.php';
 ?>

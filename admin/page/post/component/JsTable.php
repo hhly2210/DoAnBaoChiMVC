@@ -1,33 +1,38 @@
-<table id="post-list" class="table table-dark">
-	<thead>
-	<tr>
-		<th>STT</th>
-		<th>Tiêu đề</th>
-		<th>Thể loại</th>
-		<th>Tác giả</th>
-		<th>Ngày viết bài</th>
-		<th>Trạng thái</th>
-		<th>Sửa/Xoá</th>
-	</tr>
-	</thead>
-	<tbody class="table-border-bottom-0">
-	</tbody>
-</table>
+<?php
+function tao_bang($api_url)
+{
+	include_once './component/deletescript.php';
+?>
+	<table id="post-list" class="table table-dark">
+		<thead>
+			<tr>
+				<th>STT</th>
+				<th>Tiêu đề</th>
+				<th>Thể loại</th>
+				<th>Tác giả</th>
+				<th>Ngày viết bài</th>
+				<th>Trạng thái</th>
+				<th>Sửa/Xoá</th>
+			</tr>
+		</thead>
+		<tbody class="table-border-bottom-0">
+		</tbody>
+	</table>
 
-<script>
-	function napLaiTable () {
-		let table = document.getElementById('post-list')
-		table.tBodies[0].innerHTML = ''
-		showTable()
-	}
+	<script>
+		function napLaiTable() {
+			let table = document.getElementById('post-list')
+			table.tBodies[0].innerHTML = ''
+			showTable()
+		}
 
-	function showTable () {
-		let table = document.getElementById('post-list')
-		fetch('/admin/post/api/getAll.php')
-			.then(r => r.json())
-			.then(data => {
-				data.forEach((item, index) => {
-					let noiDung = `
+		function showTable() {
+			let table = document.getElementById('post-list')
+			fetch('<?php echo $api_url ?>')
+				.then(r => r.json())
+				.then(data => {
+					data.forEach((item, index) => {
+						let noiDung = `
     <tr>
         <td>${index + 1}</td>
         <td>
@@ -36,7 +41,7 @@
         <td><span>${item.catName}</span></td>
         <td><span>${item.adminName}</span></td>
         <td><span>${item.CreatedDate}</span></td>
-        <td><span>${item.IsActive}</span></td>
+        <td><span>${item.IsActive === null ? 'Chờ' : (item.IsActive?'Đã':'Không')} duyệt</span></td>
         <td>
             <div class="dropdown">
                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -56,10 +61,12 @@
         </td>
     </tr>
 `
-					table.tBodies[0].innerHTML += noiDung
+						table.tBodies[0].innerHTML += noiDung
+					})
 				})
-			})
-	}
+		}
 
-	showTable()
-</script>
+		showTable()
+	</script>
+<?php
+}

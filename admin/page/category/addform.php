@@ -62,7 +62,7 @@ $idscript = "n" . strval(random_int(0, 99));
 		let form = document.getElementById('add-form')
 		let thongBao = document.getElementById('$idscript')
 		thongBao.noiDung = thongBao.querySelector('.noi-dung')
-		fetch('/admin/category/add.php', {method: 'POST', body: new FormData(form)})
+		fetch('/admin/api/category/add.php', {method: 'POST', body: new FormData(form)})
 			.then(r => {
 				if (r.status === 200) {
 					thongBao.classList.add('alert-success')

@@ -232,5 +232,5 @@ ob_start();
 	<!-- Kết thúc đoạn mã HTML -->
 <?php
 $content = ob_get_clean();
-include_once '../layout/template.php';
+include_once '../../layout/template.php';
 ?>

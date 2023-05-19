@@ -1,7 +1,7 @@
 <?php
 ob_start();
 // Đoạn mã HTML và PHP của bạn ở đây
-include '../context/user.php';
+include_once '../../context/user.php';
 session_start();
 $id = $_SESSION["adminID"];
 $user = new user();
@@ -73,5 +73,5 @@ if (count($_POST) > 0) {
 	<!-- Kết thúc đoạn mã HTML -->
 <?php
 $content = ob_get_clean();
-include_once '../layout/template.php';
+include_once '../../layout/template.php';
 ?>

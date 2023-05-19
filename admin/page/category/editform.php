@@ -31,7 +31,7 @@
 	function sua (id) {
 		let form = document.getElementById('edit-form')
 		form.elements.catID.value = id
-		fetch('/admin/category/get.php?catID=' + id)
+		fetch('/admin/api/category/get.php?catID=' + id)
 			.then(res => {
 				if (res.status === 200) {
 					res.json().then(obj => {
@@ -45,7 +45,7 @@
 
 	function submit_sua () {
 		let form = document.getElementById('edit-form')
-		fetch('/admin/category/edit.php', {
+		fetch('/admin/api/category/edit.php', {
 			method: 'POST',
 			body: new FormData(form)
 		}).then(res => {

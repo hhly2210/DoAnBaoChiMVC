@@ -20,7 +20,7 @@
 
 	function showTable () {
 		let table = document.getElementById('category-list')
-		fetch('/admin/category/getAll.php')
+		fetch('/admin/api/category/getAll.php')
 			.then(r => r.json())
 			.then(data => {
 				data.forEach((item, index) => {

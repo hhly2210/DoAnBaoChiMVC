@@ -1,6 +1,6 @@
 <?php
-include_once '../context/category.php';
-include_once '../../lib/session.php';
+include_once '/../../context/category.php';
+include_once '/../../../lib/session.php';
 
 Session::checkSession();
 $id = $_GET["catID"];

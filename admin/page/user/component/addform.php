@@ -21,17 +21,14 @@ $idscript = "n" . strval(random_int(0, 99));
 								<label class="col-sm-2 col-form-label" for="adminName">Tên người dùng
 									<span class="text-danger">*</span></label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" name="adminName" id="adminName"
-										   placeholder="Nhập vào đây👉👈" required/>
+									<input type="text" class="form-control" name="adminName" id="adminName" placeholder="Nhập vào đây👉👈" required />
 								</div>
 							</div>
 							<div class="row mb-3">
 								<label class="col-sm-2 col-form-label" for="Email">Email</label>
 								<div class="col-sm-10">
 									<div class="input-group input-group-merge">
-										<input type="text" id="basic-default-email" name="Email" class="form-control"
-											   placeholder="lyhai" aria-label="lyhai" aria-describedby="Email2"/><span
-												class="input-group-text" id="Email2">@gmail.com</span>
+										<input type="text" id="basic-default-email" name="Email" class="form-control" placeholder="lyhai" aria-label="lyhai" aria-describedby="Email2" /><span class="input-group-text" id="Email2">@gmail.com</span>
 									</div>
 								</div>
 							</div>
@@ -39,40 +36,35 @@ $idscript = "n" . strval(random_int(0, 99));
 								<label class="col-sm-2 col-form-label" for="adminUser">Tên tài khoản
 									<span class="text-danger">*</span></label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" name="adminUser" id="adminUser"
-										   placeholder="admin😐" required/>
+									<input type="text" class="form-control" name="adminUser" id="adminUser" placeholder="admin😐" required />
 								</div>
 							</div>
 							<div class="mb-3 row">
-								<label class="col-md-2 col-form-label" for="adminPass">Mật khẩu<span
-											class="text-danger">*</span></label>
+								<label class="col-md-2 col-form-label" for="adminPass">Mật khẩu<span class="text-danger">*</span></label>
 								<div class="col-md-10">
-									<input class="form-control" type="password" name="adminPass" id="adminPass"/>
+									<input class="form-control" type="password" name="adminPass" id="adminPass" />
 								</div>
 							</div>
 							<div class="row gy-3">
 								<div class="col-md">
-									<label class="col-md-2 col-form-label" for="roleID">Chức vụ<span
-												class="text-danger">*</span></label>
+									<label class="col-md-2 col-form-label" for="roleID">Chức vụ<span class="text-danger">*</span></label>
 									<div class="form-check form-check-inline mt-3">
-										<input class="form-check-input" type="radio" name="roleID" id="roleID"
-											   value="1"/>
+										<input class="form-check-input" type="radio" name="roleID" id="roleID" value="1" />
 										<label class="form-check-label" for="roleID">Admin</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="radio" name="roleID" id="inlineRadio2"
-											   value="2"/>
+										<input class="form-check-input" type="radio" name="roleID" id="inlineRadio2" value="2" />
 										<label class="form-check-label" for="inlineRadio2">Người viết bài</label>
 									</div>
 								</div>
 							</div>
 							<div class="form-check">
 								<label class="col-md-2 col-form-check-label" for="Active"> Trạng thái </label>
-								<input class="form-check-input" type="checkbox" name="Active" id="Active" checked/>
+								<input class="form-check-input" type="checkbox" name="Active" id="Active" checked />
 							</div>
 							<div class="mb-3">
 								<label for="Avatar" class="form-label">Chọn ảnh đại diện</label>
-								<input accept="image/*" class="form-control" type="file" name="Avatar" id="Avatar"/>
+								<input accept="image/*" class="form-control" type="file" name="Avatar" id="Avatar" />
 							</div>
 							<div class="row justify-content-end mb-3">
 								<div class="col-sm-10">
@@ -94,7 +86,7 @@ $idscript = "n" . strval(random_int(0, 99));
 </div>
 
 <script>
-	function submit () {
+	function submit() {
 		let form = document.getElementById('add-form')
 		let formData = new FormData(form)
 
@@ -105,10 +97,10 @@ $idscript = "n" . strval(random_int(0, 99));
 
 		let thongBao = document.getElementById('$idscript')
 		thongBao.noiDung = thongBao.querySelector('.noi-dung')
-		fetch('/admin/user/add.php', {
-			method: 'POST',
-			body: formData
-		})
+		fetch('/admin/api/user/add.php', {
+				method: 'POST',
+				body: formData
+			})
 			.then(r => {
 				if (r.status === 200) {
 					thongBao.classList.add('alert-success')
@@ -141,7 +133,7 @@ $idscript = "n" . strval(random_int(0, 99));
 		}
 	})
 
-	function tuTat (dom) {
+	function tuTat(dom) {
 		setTimeout(() => {
 			dom.classList.add('fade')
 			dom.classList.add('d-none')

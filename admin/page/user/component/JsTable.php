@@ -23,7 +23,7 @@
 
 	function showTable () {
 		let table = document.getElementById('user-list')
-		fetch('/admin/user/getAll.php')
+		fetch('/admin/api/user/getAll.php')
 			.then(r => r.json())
 			.then(data => {
 				data.forEach((item, index) => {

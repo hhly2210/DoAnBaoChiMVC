@@ -1,10 +1,10 @@
 <?php
-include_once '../context/category.php';
-$cat = new category();
+include __DIR__ . '/../../context/user.php';
+$user = new user();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $inputJSON = file_get_contents('php://input');
     $input = json_decode($inputJSON, TRUE);
-    $insertCat = $cat->delete_category($input['catID']);
+    $insertUser = $user->delete_user($input['adminID']);
     http_response_code(200);
     die();
 }

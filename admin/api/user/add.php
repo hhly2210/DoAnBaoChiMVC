@@ -1,5 +1,5 @@
 <?php
-include_once '../context/user.php';
+include_once __DIR__ . '/../../context/user.php';
 $user = new user();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $adminName = $_POST['adminName'];
