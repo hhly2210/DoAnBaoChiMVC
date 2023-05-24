@@ -1,6 +1,20 @@
 <?php
+use helpers\Format;
 include_once __DIR__ . '/../../lib/session.php';
 Session::init();
+include_once __DIR__ . '/../../lib/database.php';
+include_once __DIR__. '/../../helpers/format.php';
+
+spl_autoload_register(function ($className) {
+    include_once __DIR__. "/../../admin/context/" . $className . ".php";
+});
+
+$db = new Database();
+$fm = new Format();
+$us = new user();
+$cat = new category();
+$post = new post();
+
 header("Cache-Control: no-cache, must-revalidate");
 header("Pragma: no-cache");
 header("Expires: Sat, 26 Jul 1997 05:00:00 GAT");

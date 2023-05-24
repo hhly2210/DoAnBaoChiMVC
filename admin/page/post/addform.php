@@ -78,10 +78,12 @@ $idscript = "n" . strval(random_int(0, 99));
 			function submit () {
 				let form = document.getElementById('add-form')
 				let thongBao = document.getElementById('$idscript')
+				let data = new FormData(form)
+				data.set('Contents',$('#summernote').summernote('code'))
 				thongBao.noiDung = thongBao.querySelector('.noi-dung')
 				fetch('/admin/api/post/add.php', {
 					method: 'POST',
-					body: new FormData(form)
+					body: data
 				})
 					.then(r => {
 						if (r.status === 200) {

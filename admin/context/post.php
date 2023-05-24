@@ -21,7 +21,6 @@ class post
     {
         $Title = $this->fm->validation($Title);
         $Abstract = $this->fm->validation($Abstract);
-        $Contents = $this->fm->validation($Contents);
         $Images = $this->fm->validation($Images);
         $catID = $this->fm->validation($catID);
         $adminID = $this->fm->validation($adminID);
@@ -78,9 +77,15 @@ class post
         return $result;
     }
 
-    public function update_post($id, $Title, $Abstract, $Contents, $Images, $Link, $CreatedDate, $IsActive, $catID, $adminID)
+    public function verify_status($id){
+        $query = "update tbl_post set IsActive = 1 where postID = $id ";
+        $result = $this->db->update($query);
+        return $result;
+    }
+
+    public function update_post($id, $Title, $Abstract, $Contents, $Images, $Link, $catID)
     {
-        $query = "update tbl_post set Title = '$Title', Abstract = '$Abstract', Contents = '$Contents', Images = '$Images', Link = '$Link', CreatedDate = '$CreatedDate', IsActive = '$IsActive', catID = '$catID', adminID = '$adminID' where postID = $id ";
+        $query = "update tbl_post set Title = '$Title', Abstract = '$Abstract', Contents = '$Contents', Images = '$Images', Link = '$Link', catID = '$catID' where postID = $id ";
         $result = $this->db->update($query);
         return $result;
     }

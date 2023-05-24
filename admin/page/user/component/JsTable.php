@@ -46,11 +46,11 @@
                 <div class='dropdown-menu'>
                     <button class='dropdown-item' data-bs-toggle='modal'
                             data-bs-target='#ModalEdit' onclick='sua(${item.adminID})'>
-                            <i class='bx bx-edit-alt me-1'></i> Edit
+                            <i class='bx bx-edit-alt me-1'></i> Sửa
                     </button>
                     <button class='dropdown-item' data-bs-toggle='modal'
                             data-bs-target='#exampleModal' onclick='xoa(${item.adminID})'>
-                            <i class='bx bx-trash me-1'></i> Delete
+                            <i class='bx bx-trash me-1'></i> Xoá
                     </button>
                 </div>
             </div>

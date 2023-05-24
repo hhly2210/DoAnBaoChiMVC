@@ -12,7 +12,7 @@ ob_start();
 		<h5 class="card-header">Các bài viết đã đăng</h5>
 		<div class="table-responsive text-nowrap">
 			<?php
-			include_once __DIR__ . '/component/JsTable.php';
+			include_once __DIR__ . '/component/JsTabledadang.php';
 			tao_bang('/admin/api/post/getAll.php');
 			?>
 		</div>

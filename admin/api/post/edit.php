@@ -2,15 +2,14 @@
 include_once __DIR__ . '/../../context/post.php';
 $post = new post();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = $_POST['adminID'];
-    $adminName = $_POST['adminName'];
-    $Email = $_POST['Email'];
-    $adminUser = $_POST['adminUser'];
-    $adminPass = $_POST['adminPass'];
-    $roleID = $_POST['roleID'];
-    $active = $_POST['Active'];
-    $avatar = $_POST['Avatar'];
-    // $insertPost = $post->update_user($id, $adminName, $Email, $adminPass, $roleID, $active, $avatar);
+    $id = $_POST['postID'];
+    $Title = $_POST['Title'];
+    $Abstract = $_POST['Abstract'];
+    $Contents = $_POST['Contents'];
+    $Images = $_POST['Images'];
+    $catID = $_POST['catID'];
+    $IsActive = $_POST['IsActive'];
+    $insertPost = $post->update_post($id, $Title, $Abstract, $Contents, $Images, $Link, $IsActive, $catID);
     http_response_code(200);
     die();
 }
