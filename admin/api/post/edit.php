@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $Images = $_POST['Images'];
     $catID = $_POST['catID'];
     $IsActive = $_POST['IsActive'];
-    $insertPost = $post->update_post($id, $Title, $Abstract, $Contents, $Images, $Link, $IsActive, $catID);
+    $insertPost = $post->update_post($id, $Title, $Abstract, $Contents, $Images, $IsActive, $catID);
     http_response_code(200);
     die();
 }

@@ -15,7 +15,6 @@ while ($result = $showPost->fetch_assoc()) {
         'Title' => $result['Title'],
         'Abstract' => $result['Abstract'],
         'Contents' => $result['Contents'],
-        'Link' => $result['Link'],
         'CreatedDate' => $result['CreatedDate'],
         'IsActive' => $result['IsActive'],
         'catName' => $result['catName'],

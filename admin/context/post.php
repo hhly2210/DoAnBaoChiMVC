@@ -77,15 +77,73 @@ class post
         return $result;
     }
 
-    public function verify_status($id){
+    public function verify_status($id)
+    {
         $query = "update tbl_post set IsActive = 1 where postID = $id ";
         $result = $this->db->update($query);
         return $result;
     }
 
-    public function update_post($id, $Title, $Abstract, $Contents, $Images, $Link, $catID)
+    // random
+    public function get_post_by_random()
     {
-        $query = "update tbl_post set Title = '$Title', Abstract = '$Abstract', Contents = '$Contents', Images = '$Images', Link = '$Link', catID = '$catID' where postID = $id ";
+        $sql = "SELECT postID FROM tbl_post";
+        $result = $this->db->select($sql);
+        // Tạo một mảng chứa các postID
+        $postIDs = array();
+        if ($result->num_rows > 0) {
+            // Duyệt qua các bản ghi và thêm postID vào mảng
+            while ($row = $result->fetch_assoc()) {
+                array_push($postIDs, $row["postID"]);
+            }
+        }
+        // Sắp xếp các postID trong mảng theo thứ tự ngẫu nhiên
+        shuffle($postIDs);
+        // Lấy 5 phần tử đầu tiên của mảng (hoặc số lượng bài viết bạn muốn hiển thị)
+        $postIDs = array_slice($postIDs, 0, 5);
+        // Chuyển đổi danh sách postID trong mảng thành một chuỗi để sử dụng trong câu lệnh SQL WHERE
+        $postIDString = implode(",", $postIDs);
+        $sql = "SELECT * FROM tbl_post WHERE IsActive = 1 AND postID IN ($postIDString) ORDER BY RAND()";
+        $result = $this->db->select($sql);
+        return $result;
+    }
+
+    // mới nhất
+    public function get_post_by_new($limit)
+    {
+        $query = "SELECT tbl_post.*, tbl_category.catName, ad.adminName FROM tbl_post
+        INNER JOIN tbl_category ON tbl_category.catID = tbl_post.catID
+        INNER JOIN tbl_admin ad ON ad.adminID = tbl_post.adminID
+         WHERE IsActive = 1 ORDER BY CreatedDate DESC LIMIT $limit";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
+    public function get_post_by_category($id, $limit)
+    {
+        $query = "SELECT * FROM tbl_post 
+        INNER JOIN tbl_admin ad ON ad.adminID = tbl_post.adminID 
+        INNER JOIN tbl_category ON tbl_category.catID = tbl_post.catID
+        WHERE tbl_post.catID = $id AND IsActive = 1 ORDER BY CreatedDate DESC LIMIT $limit";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
+    // show post by cat
+    public function show_post_one_by_cat($id)
+    {
+        $query = "SELECT tbl_post.*, tbl_category.catName, ad.adminName
+         FROM tbl_post
+        INNER JOIN tbl_admin ad ON ad.adminID = tbl_post.adminID 
+        INNER JOIN tbl_category ON tbl_category.catID = tbl_post.catID
+         WHERE postID = $id";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
+    public function update_post($id, $Title, $Abstract, $Contents, $Images, $catID)
+    {
+        $query = "update tbl_post set Title = '$Title', Abstract = '$Abstract', Contents = '$Contents', Images = '$Images', catID = '$catID' where postID = $id ";
         $result = $this->db->update($query);
         return $result;
     }
@@ -97,5 +155,3 @@ class post
         return $result;
     }
 }
-
-?>

@@ -48,6 +48,14 @@ class category
         return $result;
     }
 
+    // Lấy dữ liệu vào mảng để render menu 
+    public function get_category_for_menu()
+    {
+        $query = "SELECT * FROM tbl_category";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
     public function update_category($id, $catName, $catDescription)
     {
         $query = "update tbl_category set catName = '$catName', catDescription = '$catDescription' where catID = $id ";

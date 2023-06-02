@@ -10,8 +10,7 @@
 					<input type="hidden" name="catID" value="">
 					<div class="mb-3">
 						<label for="recipient-name" class="col-form-label">Tên thể loại thay thế:</label>
-						<input type="text" class="form-control" id="recipient-name" name="catName"
-							   placeholder="Nhập vào đây...">
+						<input type="text" class="form-control" id="recipient-name" name="catName">
 					</div>
 					<div class="mb-3">
 						<label for="message-text" class="col-form-label">Mô tả thay thế:</label>
@@ -55,6 +54,5 @@
 			}
 		})
 	}
-
 
 </script>

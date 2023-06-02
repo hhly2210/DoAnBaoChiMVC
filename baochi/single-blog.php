@@ -1,151 +1,118 @@
 <?php
-    include 'inc/header.php';
+include_once __DIR__ . '/inc/header.php';
+include_once __DIR__ . "/../admin/context/post.php";
+if (!isset($_GET['postID']) || $_GET['postID'] == NULL) {
+    header('Location: /baochi/pages-404.php');
+    die();
+} else {
+    $id = $_GET['postID'];
+}
 ?>
-    <!-- Preloader Start -->
-    <div id="preloader">
-        <div class="preload-content">
-            <div id="world-load"></div>
-        </div>
+<!-- Preloader Start -->
+<div id="preloader">
+    <div class="preload-content">
+        <div id="world-load"></div>
     </div>
-    <!-- Preloader End -->
-
-    <!-- ********** Hero Area Start ********** -->
-    <div class="hero-area height-600 bg-img background-overlay" style="background-image: url(img/blog-img/bg2.jpg);">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center justify-content-center">
-                <div class="col-12 col-md-8 col-lg-6">
-                    <div class="single-blog-title text-center">
-                        <!-- Catagory -->
-                        <div class="post-cta"><a href="#">travel</a></div>
-                        <h3>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</h3>
+</div>
+<!-- Preloader End -->
+<?php
+$showname = $post->show_post_one_by_cat($id);
+if ($showname) {
+    while ($result = $showname->fetch_assoc()) {
+?>
+        <!-- ********** Hero Area Start ********** -->
+        <div class="hero-area height-600 bg-img background-overlay" style="background-image: url(<?php echo $result['Images'] ?>);">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center justify-content-center">
+                    <div class="col-12 col-md-8 col-lg-6">
+                        <div class="single-blog-title text-center">
+                            <!-- Catagory -->
+                            <div class="post-cta"><a href="catagory.php?catID=<?php echo $result['catID'] ?>"><?php echo $result['catName'] ?></a></div>
+                            <h3><?php echo $result['Title'] ?></h3>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- ********** Hero Area End ********** -->
+<?php
 
-    <div class="main-content-wrapper section-padding-100">
-        <div class="container">
-            <div class="row justify-content-center">
-                <!-- ============= Post Content Area ============= -->
-                <div class="col-12 col-lg-8">
-                    <div class="single-blog-content mb-100">
-                        <!-- Post Meta -->
-                        <div class="post-meta">
-                            <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                        </div>
-                        <!-- Post Content -->
-                        <div class="post-content">
-                            <h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim nulla, mollis eu metus in, sagittis fringilla tortor. Phasellus eget purus id felis dignissim convallis. Suspendisse et augue dui. Morbi gravida sed justo vel venenatis. Ut tempor pretium maximus. Donec libero diam, faucibus vitae lectus nec, accumsan gravida dui. Nam interdum mi eget lacus aliquet, sit amet ultricies magna pharetra. In ut odio a ligula egestas pretium et quis sapien. Etiam faucibus magna eu porta vulputate. Aliquam euismod rhoncus malesuada. Nunc rutrum hendrerit semper.</h6>
-                            <h6>Maecenas vitae sem varius, imperdiet nisi a, tristique nisi. Sed scelerisque suscipit leo cursus accumsan. Donec vel turpis quam. Mauris non nisl nec nunc gravida ullamcorper id vestibulum magna. Donec non velit finibus, laoreet arcu nec, facilisis augue. Aliquam sed purus id erat accumsan congue. Mauris semper ullamcorper nibh non pellentesque. Aenean euismod purus sit amet quam vehicula ornare.</h6>
-                            <blockquote class="mb-30">
-                                <h6>Aliquam auctor lacus a dapibus pulvinar. Morbi in elit erat. Quisque et augue nec tortor blandit hendrerit eget sit amet sapien. Curabitur at tincidunt metus, quis porta ex. Duis lacinia metus vel eros cursus pretium eget.</h6>
-                                <div class="post-author">
-                                    <p>Robert Morgan</p>
+    }
+}
+?>
+<!-- ********** Hero Area End ********** -->
+
+<div class="main-content-wrapper section-padding-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <?php
+            $show = $post->show_post_one_by_cat($id);
+            if ($show) {
+                while ($result = $show->fetch_assoc()) {
+            ?>
+                    <!-- ============= Post Content Area ============= -->
+                    <div class="col-12 col-lg-8">
+                        <div class="single-blog-content mb-100">
+                            <!-- Post Content -->
+                            <div class="post-content">
+                                <?php echo $result['Contents'] ?>
+                                <!-- Post Meta -->
+                                <div class="post-meta second-part">
+                                    <p><?php echo $result['adminName'] ?> on <a href="#" class="post-date"><?php echo $result['CreatedDate'] ?></a></p>
                                 </div>
-                            </blockquote>
-                            <h6>Donec orci dolor, pretium in luctus id, consequat vitae nibh. Quisque hendrerit, lorem sit amet mollis malesuada, urna orci volutpat ex, sed scelerisque nunc velit et massa. Sed maximus id erat vel feugiat. Phasellus bibendum nisi non urna bibendum elementum. Aenean tincidunt nibh vitae ex facilisis ultrices. Integer ornare efficitur ultrices. Integer neque lectus, venenatis at pulvinar quis, aliquet id neque. Mauris ultrices consequat velit, sed dignissim elit posuere in. Cras vitae dictum dui.</h6>
-                            <!-- Post Tags -->
-                            <ul class="post-tags">
-                                <li><a href="#">Manual</a></li>
-                                <li><a href="#">Liberty</a></li>
-                                <li><a href="#">Recommendations</a></li>
-                                <li><a href="#">Interpritation</a></li>
-                            </ul>
-                            <!-- Post Meta -->
-                            <div class="post-meta second-part">
-                                <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
                             </div>
                         </div>
                     </div>
-                </div>
+            <?php
+                }
+            }
+            ?>
 
-                <!-- ========== Sidebar Area ========== -->
-                <?php 
-                    include 'inc/sidebar.php';
-                ?>
-                <!-- ========== End Sidebar Area ========== -->
-
+            <!-- ========== Sidebar Area ========== -->
+            <?php
+            include_once __DIR__ . '/inc/sidebar.php';
+            ?>
+            <!-- ========== End Sidebar Area ========== -->
 
             <!-- ============== Related Post ============== -->
             <div class="row">
-                <div class="col-12 col-md-6 col-lg-4">
-                    <!-- Single Blog Post -->
-                    <div class="single-blog-post">
-                        <!-- Post Thumbnail -->
-                        <div class="post-thumbnail">
-                            <img src="img/blog-img/b1.jpg" alt="">
-                            <!-- Catagory -->
-                            <div class="post-cta"><a href="#">travel</a></div>
-                        </div>
-                        <!-- Post Content -->
-                        <div class="post-content">
-                            <a href="#" class="headline">
-                                <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</h5>
-                            </a>
-                            <p>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in...</p>
-                            <!-- Post Meta -->
-                            <div class="post-meta">
-                                <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                <?php
+                $limit = 3;
+                $show = $post->get_post_by_new($limit);
+                if ($show) {
+                    while ($result = $show->fetch_assoc()) {
+                ?>
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <!-- Single Blog Post -->
+                            <div class="single-blog-post">
+                                <!-- Post Thumbnail -->
+                                <div class="post-thumbnail">
+                                    <img src="<?php echo $result['Images'] ?>" alt="">
+                                    <!-- Catagory -->
+                                    <div class="post-cta"><a href="#"><?php echo $result['catName'] ?></a></div>
+                                </div>
+                                <!-- Post Content -->
+                                <div class="post-content">
+                                    <a href="single-blog.php?postID=<?php echo $result['postID'] ?>" class="headline">
+                                        <h5 class="rutgon2dong"><?php echo $result['Title'] ?></h5>
+                                    </a>
+                                    <p class="rutgon3dong"><?php echo $result['Abstract'] ?></p>
+                                    <!-- Post Meta -->
+                                    <div class="post-meta">
+                                        <p><?php echo $result['adminName'] ?> on <a href="#" class="post-date"><?php echo $result['CreatedDate'] ?></a></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4">
-                    <!-- Single Blog Post -->
-                    <div class="single-blog-post">
-                        <!-- Post Thumbnail -->
-                        <div class="post-thumbnail">
-                            <img src="img/blog-img/b2.jpg" alt="">
-                            <!-- Catagory -->
-                            <div class="post-cta"><a href="#">travel</a></div>
-                        </div>
-                        <!-- Post Content -->
-                        <div class="post-content">
-                            <a href="#" class="headline">
-                                <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</h5>
-                            </a>
-                            <p>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in...</p>
-                            <!-- Post Meta -->
-                            <div class="post-meta">
-                                <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4">
-                    <!-- Single Blog Post -->
-                    <div class="single-blog-post">
-                        <!-- Post Thumbnail -->
-                        <div class="post-thumbnail">
-                            <img src="img/blog-img/b7.jpg" alt="">
-                            <!-- Catagory -->
-                            <div class="post-cta"><a href="#">travel</a></div>
-                            <!-- Video Button -->
-                            <a href="https://www.youtube.com/watch?v=IhnqEwFSJRg" class="video-btn"><i class="fa fa-play"></i></a>
-                        </div>
-                        <!-- Post Content -->
-                        <div class="post-content">
-                            <a href="#" class="headline">
-                                <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</h5>
-                            </a>
-                            <p>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in...</p>
-                            <!-- Post Meta -->
-                            <div class="post-meta">
-                                <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                    }
+                }
+                ?>
             </div>
 
             <div class="row">
                 <div class="col-12 col-lg-8">
                     <div class="post-a-comment-area mt-70">
-                        <h5>Get in Touch</h5>
+                        <h5>Bình luận</h5>
                         <!-- Contact Form -->
                         <form action="#" method="post">
                             <div class="row">
@@ -154,15 +121,7 @@
                                         <input type="text" name="name" id="name" required>
                                         <span class="highlight"></span>
                                         <span class="bar"></span>
-                                        <label>Enter your name</label>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="group">
-                                        <input type="email" name="email" id="email" required>
-                                        <span class="highlight"></span>
-                                        <span class="bar"></span>
-                                        <label>Enter your email</label>
+                                        <label>Nhập tên của bạn</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -170,11 +129,11 @@
                                         <textarea name="message" id="message" required></textarea>
                                         <span class="highlight"></span>
                                         <span class="bar"></span>
-                                        <label>Enter your comment</label>
+                                        <label>Nhập comment</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn world-btn">Post comment</button>
+                                    <button type="submit" class="btn world-btn">Đăng tải</button>
                                 </div>
                             </div>
                         </form>
@@ -192,7 +151,7 @@
                                     <!-- Comment Meta -->
                                     <div class="comment-meta d-flex align-items-center justify-content-between">
                                         <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                        <a href="#" class="comment-reply btn world-btn">Reply</a>
+                                        <a href="#" class="comment-reply btn world-btn">Trả lời</a>
                                     </div>
                                     <p>Pick the yellow peach that looks like a sunset with its red, orange, and pink coat skin, peel it off with your teeth. Sink them into unripened...</p>
                                 </div>
@@ -203,14 +162,14 @@
                                             <!-- Comment Meta -->
                                             <div class="comment-meta d-flex align-items-center justify-content-between">
                                                 <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                                <a href="#" class="comment-reply btn world-btn">Reply</a>
+                                                <a href="#" class="comment-reply btn world-btn">Trả lời</a>
                                             </div>
                                             <p>Pick the yellow peach that looks like a sunset with its red, orange, and pink coat skin, peel it off with your teeth. Sink them into unripened...</p>
                                         </div>
                                     </li>
                                 </ol>
                             </li>
-                            
+
                             <!-- Single Comment Area -->
                             <li class="single_comment_area">
                                 <!-- Comment Content -->
@@ -223,7 +182,7 @@
                                     <p>Pick the yellow peach that looks like a sunset with its red, orange, and pink coat skin, peel it off with your teeth. Sink them into unripened...</p>
                                 </div>
                             </li>
-                            
+
                         </ol>
                     </div>
                 </div>
@@ -231,6 +190,6 @@
         </div>
     </div>
 
-<?php
-    include 'inc/footer.php';
-?>
+    <?php
+    include_once __DIR__ . '/inc/footer.php';
+    ?>

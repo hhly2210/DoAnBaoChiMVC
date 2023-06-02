@@ -1,12 +1,14 @@
 <?php
+
 use helpers\Format;
+
 include_once __DIR__ . '/../../lib/session.php';
 Session::init();
 include_once __DIR__ . '/../../lib/database.php';
-include_once __DIR__. '/../../helpers/format.php';
+include_once __DIR__ . '/../../helpers/format.php';
 
 spl_autoload_register(function ($className) {
-    include_once __DIR__. "/../../admin/context/" . $className . ".php";
+    include_once __DIR__ . "/../../admin/context/" . $className . ".php";
 });
 
 $db = new Database();
@@ -32,7 +34,7 @@ header("Cache-Control: max-age = 10800");
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>World - Blog &amp; Magazine Template</title>
+    <title>Tin tức mỗi ngày &amp; em lý</title>
 
     <!-- Favicon  -->
     <link rel="icon" href="./img/core-img/favicon.ico">
@@ -44,6 +46,7 @@ header("Cache-Control: max-age = 10800");
 	<link rel="stylesheet" href="./css/magnific-popup.css" type="text/css" media="all">
 	<link rel="stylesheet" href="./css/owl.carousel.css" type="text/css" media="all">
 	<link rel="stylesheet" href="./css/themify-icons.css" type="text/css" media="all"> -->
+    <link rel="stylesheet" href="./css/titlerutgon.css" type="text/css" media="all">
     <link rel="stylesheet" href="./css/style.css" type="text/css" media="all">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
@@ -57,37 +60,32 @@ header("Cache-Control: max-age = 10800");
                 <div class="col-12">
                     <nav class="navbar navbar-expand-lg">
                         <!-- Logo -->
-                        <a class="navbar-brand" href="index.html"><img src="./img/core-img/logo.png" alt="Logo"></a>
+                        <a class="navbar-brand" href="index.php"><img src="./img/core-img/logo.png" alt="Logo"></a>
                         <!-- Navbar Toggler -->
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#worldNav" aria-controls="worldNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                         <!-- Navbar -->
                         <div class="collapse navbar-collapse" id="worldNav">
-                            <ul class="navbar-nav ml-auto">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+                            <ul class="navbar-nav ml-auto" id="main-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.php">Trang chủ <span class="sr-only">(current)</span></a>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <!-- <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="contact.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="index.php">Home</a>
                                         <a class="dropdown-item" href="catagory.php">Catagory</a>
                                         <a class="dropdown-item" href="single-blog.php">Single Blog</a>
                                         <a class="dropdown-item" href="regular-page.html">Regular Page</a>
                                         <a class="dropdown-item" href="contact.php">Contact</a>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Gadgets</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Lifestyle</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Video</a>
-                                </li>
+                                    </ul>
+                                </li> -->
+                                <?php
+                                    include_once __DIR__ . "/render_menu.php";
+                                ?>
                                 <li class="nav-item">
                                     <a class="nav-link" href="contact.php">Contact</a>
                                 </li>
+
                             </ul>
                             <!-- Search Form  -->
                             <div id="search-wrapper">
@@ -98,7 +96,7 @@ header("Cache-Control: max-age = 10800");
                                 </form>
                             </div>
                             <!-- Icon login -->
-                            <div class = "form-submit">
+                            <div class="form-submit">
                                 <a class="btn btn-primary" href="/admin/page/login.php"><i class="fas fa-sign-in-alt ml-2"></i> Đăng nhập</a>
                             </div>
                         </div>
