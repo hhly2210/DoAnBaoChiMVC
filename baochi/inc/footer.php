@@ -9,7 +9,7 @@
                             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 Copyright &copy;<script>
                                     document.write(new Date().getFullYear());
-                                </script> | Made with by <a href="#" target="_blank">Colorlib</a>
+                                </script> | Made with by <a href="#" target="_blank">Colorlib & Em Lý</a>
                             <p>Proudly distributed by <a href="#" target="_blank">ThemeWagon</a></p>
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                         </div>
@@ -17,9 +17,9 @@
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="footer-single-widget">
-                        <h5>Subscribe</h5>
-                        <form action="#" method="post">
-                            <input type="email" name="email" id="email" placeholder="Enter your mail">
+                        <h5>Liên hệ</h5>
+                        <form action="contact.php" method="post">
+                            <input type="email" name="email" id="email" placeholder="Nhập email">
                             <button type="button"><i class="fa fa-arrow-right"></i></button>
                         </form>
                     </div>

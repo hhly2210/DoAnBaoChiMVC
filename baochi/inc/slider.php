@@ -8,7 +8,8 @@ include_once __DIR__ . "/../../admin/context/post.php";
     <!-- Hero Slides Area -->
     <div class="hero-slides owl-carousel">
         <?php
-        $postbyrandom = $post->get_post_by_random();
+        $limit = 5;
+        $postbyrandom = $post->get_post_by_random($limit);
         if ($postbyrandom) {
             while ($result = $postbyrandom->fetch_assoc()) {
         ?>
@@ -28,10 +29,8 @@ include_once __DIR__ . "/../../admin/context/post.php";
                 <div class="col-12">
                     <div class="hero-post-slide">
                         <?php
-                        // Đời sống 23
-                        $idtheloai = 23;
                         $limit = 5;
-                        $postbycat = $post->get_post_by_category($idtheloai, $limit);
+                        $postbycat = $post->get_post_by_random($limit);
                         if ($postbycat) {
                             $datadelay = 0;
                             while ($result = $postbycat->fetch_assoc()) {

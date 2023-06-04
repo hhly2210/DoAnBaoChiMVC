@@ -9,7 +9,7 @@ include 'inc/slider.php';
             <!-- Contact Form Area -->
             <div class="col-12 col-md-10 col-lg-8">
                 <div class="contact-form">
-                    <h5>Get in Touch</h5>
+                    <h5>Liên hệ</h5>
                     <!-- Contact Form -->
                     <form action="#" method="post">
                         <div class="row">
@@ -18,7 +18,7 @@ include 'inc/slider.php';
                                     <input type="text" name="name" id="name" required>
                                     <span class="highlight"></span>
                                     <span class="bar"></span>
-                                    <label>Enter your name</label>
+                                    <label>Họ tên</label>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
@@ -26,7 +26,7 @@ include 'inc/slider.php';
                                     <input type="email" name="email" id="email" required>
                                     <span class="highlight"></span>
                                     <span class="bar"></span>
-                                    <label>Enter your email</label>
+                                    <label>Email</label>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -34,11 +34,11 @@ include 'inc/slider.php';
                                     <textarea name="message" id="message" required></textarea>
                                     <span class="highlight"></span>
                                     <span class="bar"></span>
-                                    <label>Enter your message</label>
+                                    <label>Lời phản hồi</label>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button type="submit" class="btn world-btn">Send Message</button>
+                                <button type="submit" class="btn world-btn">Gửi</button>
                             </div>
                         </div>
                     </form>

@@ -1,12 +1,14 @@
 <?php
-include_once __DIR__ . '/inc/header.php';
 include_once __DIR__ . "/../admin/context/post.php";
+include_once __DIR__ . "/inc/divcomment.php";
+
 if (!isset($_GET['postID']) || $_GET['postID'] == NULL) {
     header('Location: /baochi/pages-404.php');
     die();
-} else {
-    $id = $_GET['postID'];
 }
+$id = $_GET['postID'];
+xuLyBinhLuan($id);
+include_once __DIR__ . '/inc/header.php';
 ?>
 <!-- Preloader Start -->
 <div id="preloader">
@@ -74,6 +76,9 @@ if ($showname) {
             <!-- ========== End Sidebar Area ========== -->
 
             <!-- ============== Related Post ============== -->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="title"><h5>Các bài viết cùng thể loại</h5></li>
+            </ul>
             <div class="row">
                 <?php
                 $limit = 3;
@@ -86,9 +91,9 @@ if ($showname) {
                             <div class="single-blog-post">
                                 <!-- Post Thumbnail -->
                                 <div class="post-thumbnail">
-                                    <img src="<?php echo $result['Images'] ?>" alt="">
+                                    <img style="height:235px;" src="<?php echo $result['Images'] ?>" alt="">
                                     <!-- Catagory -->
-                                    <div class="post-cta"><a href="#"><?php echo $result['catName'] ?></a></div>
+                                    <div class="post-cta"><a href="catagory.php?catID=<?php echo $result['catID'] ?>"><?php echo $result['catName'] ?></a></div>
                                 </div>
                                 <!-- Post Content -->
                                 <div class="post-content">
@@ -110,15 +115,15 @@ if ($showname) {
             </div>
 
             <div class="row">
-                <div class="col-12 col-lg-8">
+                <div class="col-12">
                     <div class="post-a-comment-area mt-70">
                         <h5>Bình luận</h5>
                         <!-- Contact Form -->
-                        <form action="#" method="post">
+                        <form method="post">
                             <div class="row">
                                 <div class="col-12 col-md-6">
                                     <div class="group">
-                                        <input type="text" name="name" id="name" required>
+                                        <input type="text" name="userName" id="name" required>
                                         <span class="highlight"></span>
                                         <span class="bar"></span>
                                         <label>Nhập tên của bạn</label>
@@ -126,7 +131,7 @@ if ($showname) {
                                 </div>
                                 <div class="col-12">
                                     <div class="group">
-                                        <textarea name="message" id="message" required></textarea>
+                                        <textarea name="comment" id="message" required></textarea>
                                         <span class="highlight"></span>
                                         <span class="bar"></span>
                                         <label>Nhập comment</label>
@@ -139,53 +144,7 @@ if ($showname) {
                         </form>
                     </div>
                 </div>
-
-                <div class="col-12 col-lg-8">
-                    <!-- Comment Area Start -->
-                    <div class="comment_area clearfix mt-70">
-                        <ol>
-                            <!-- Single Comment Area -->
-                            <li class="single_comment_area">
-                                <!-- Comment Content -->
-                                <div class="comment-content">
-                                    <!-- Comment Meta -->
-                                    <div class="comment-meta d-flex align-items-center justify-content-between">
-                                        <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                        <a href="#" class="comment-reply btn world-btn">Trả lời</a>
-                                    </div>
-                                    <p>Pick the yellow peach that looks like a sunset with its red, orange, and pink coat skin, peel it off with your teeth. Sink them into unripened...</p>
-                                </div>
-                                <ol class="children">
-                                    <li class="single_comment_area">
-                                        <!-- Comment Content -->
-                                        <div class="comment-content">
-                                            <!-- Comment Meta -->
-                                            <div class="comment-meta d-flex align-items-center justify-content-between">
-                                                <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                                <a href="#" class="comment-reply btn world-btn">Trả lời</a>
-                                            </div>
-                                            <p>Pick the yellow peach that looks like a sunset with its red, orange, and pink coat skin, peel it off with your teeth. Sink them into unripened...</p>
-                                        </div>
-                                    </li>
-                                </ol>
-                            </li>
-
-                            <!-- Single Comment Area -->
-                            <li class="single_comment_area">
-                                <!-- Comment Content -->
-                                <div class="comment-content">
-                                    <!-- Comment Meta -->
-                                    <div class="comment-meta d-flex align-items-center justify-content-between">
-                                        <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                        <a href="#" class="comment-reply btn world-btn">Reply</a>
-                                    </div>
-                                    <p>Pick the yellow peach that looks like a sunset with its red, orange, and pink coat skin, peel it off with your teeth. Sink them into unripened...</p>
-                                </div>
-                            </li>
-
-                        </ol>
-                    </div>
-                </div>
+                <?php inBinhLuan($id); ?>
             </div>
         </div>
     </div>

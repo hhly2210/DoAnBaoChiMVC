@@ -37,7 +37,7 @@ if (!isset($_GET['catID']) || $_GET['catID'] == NULL) {
                             <div class="tab-pane fade show active" id="world-tab-1" role="tabpanel" aria-labelledby="tab1">
                                 <?php
                                 $limit = 7;
-                                $postbycat = $post->get_post_by_category($id, $limit);
+                                $postbycat = $post->get_all_post_by_category_paging($id, $limit);
                                 if ($postbycat) {
                                     while ($result = $postbycat->fetch_assoc()) {
                                 ?>
@@ -61,18 +61,11 @@ if (!isset($_GET['catID']) || $_GET['catID'] == NULL) {
                                         </div>
                                 <?php
                                     }
+                                    include_once __DIR__ . "/inc/phantrang.php";
                                 }else{
                                     echo '<h4>Hiện chưa có bài viết nào cho thể loại trên</h4>';
                                 }
                                 ?>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Load More btn -->
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="load-more-btn mt-50 text-center">
-                                <a href="#" class="btn world-btn">Xem thêm</a>
                             </div>
                         </div>
                     </div>

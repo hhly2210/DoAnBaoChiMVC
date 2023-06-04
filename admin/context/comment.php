@@ -45,4 +45,17 @@ class comment
         $result = $this->db->select($query);
         return $result;
     }
+    public function show_comment_for_post($id)
+    {
+        $query = "SELECT * FROM tbl_comment WHERE postID = $id ORDER BY createdDate DESC";
+
+        $result = $this->db->select($query);
+        $datacomment = [];
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $datacomment[] = $row;
+            }
+        }
+        return $datacomment;
+    }
 }

@@ -27,9 +27,9 @@ include_once __DIR__ . "/../../../admin/context/post.php";
                             <div class="single-blog-post wow fadeInUpBig" data-wow-delay="<?php echo $datadelay ?>s">
                                 <!-- Post Thumbnail -->
                                 <div class="post-thumbnail">
-                                    <img src="<?php echo $result['Images'] ?>" alt="">
+                                    <img style="height:225px;" src="<?php echo $result['Images'] ?>" alt="">
                                     <!-- Catagory -->
-                                    <div class="post-cta"><a href="#"><?php echo $result['catName'] ?></a></div>
+                                    <div class="post-cta"><a href="catagory.php?catID=<?php echo $result['catID']?>"><?php echo $result['catName'] ?></a></div>
                                 </div>
                                 <!-- Post Content -->
                                 <div class="post-content">

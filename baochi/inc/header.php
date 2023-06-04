@@ -83,7 +83,7 @@ header("Cache-Control: max-age = 10800");
                                     include_once __DIR__ . "/render_menu.php";
                                 ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="contact.php">Contact</a>
+                                    <a class="nav-link" href="contact.php">Liên hệ</a>
                                 </li>
 
                             </ul>

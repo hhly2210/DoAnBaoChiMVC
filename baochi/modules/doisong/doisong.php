@@ -25,10 +25,11 @@ include_once __DIR__ . "/../../../admin/context/post.php";
                                 <div class="single-blog-post">
                                     <!-- Post Thumbnail -->
                                     <div class="post-thumbnail">
-                                        <img src="<?php echo $result['Images'] ?>" alt="">
+                                        <img style="height:225px;" src="<?php echo $result['Images'] ?>" alt="">
                                         <!-- Catagory -->
-                                        <div class="post-cta"><a href="#"><?php echo $result['catName'] ?></a></div>
+                                        <div class="post-cta"><a href="catagory.php?catID=<?php echo $result['catID']?>"><?php echo $result['catName'] ?></a></div>
                                     </div>
+                                    
                                     <!-- Post Content -->
                                     <div class="post-content">
                                         <a href="single-blog.php?postID=<?php echo $result['postID'] ?>" class="headline">
@@ -68,7 +69,7 @@ include_once __DIR__ . "/../../../admin/context/post.php";
                                 <!-- Post Content -->
                                 <div class="post-content">
                                     <a href="single-blog.php?postID=<?php echo $result['postID'] ?>" class="headline">
-                                        <h5 class="rutgon3dong"><?php echo $result['Title'] ?></h5>
+                                        <h5 class="rutgon2dong"><?php echo $result['Title'] ?></h5>
                                     </a>
                                     <!-- Post Meta -->
                                     <div class="post-meta">

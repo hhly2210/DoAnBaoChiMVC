@@ -10,7 +10,8 @@ include_once __DIR__ . "/../../admin/context/post.php";
             <h5 class="title">Các bài viết nổi bật</h5>
             <div class="widget-content">
                 <?php
-                $postbyrandom = $post->get_post_by_random();
+                $limit = 5;
+                $postbyrandom = $post->get_post_by_random($limit);
                 if ($postbyrandom) {
                     while ($result = $postbyrandom->fetch_assoc()) {
                 ?>
@@ -47,7 +48,7 @@ include_once __DIR__ . "/../../admin/context/post.php";
                         <div class="single-blog-post todays-pick">
                             <!-- Post Thumbnail -->
                             <div class="post-thumbnail">
-                                <img src="<?php echo $result['Images'] ?>" alt="">
+                                <img src="<?php echo $result['Images'] ?>" style="height:200px;">
                             </div>
                             <!-- Post Content -->
                             <div class="post-content px-0 pb-0">
