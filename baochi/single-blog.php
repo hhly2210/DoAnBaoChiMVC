@@ -148,7 +148,6 @@ if ($showname) {
             </div>
         </div>
     </div>
-
     <?php
     include_once __DIR__ . '/inc/footer.php';
     ?>

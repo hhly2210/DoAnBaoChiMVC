@@ -139,7 +139,23 @@ class post
         $result = $this->db->select($query);
         return $result;
     }
-
+    // phân trang theo tìm kiếm 
+    public function get_all_post_by_search_paging($limit, $s)
+    {
+        // $limit = 7;
+        if (!isset($_GET['trang']))
+            $trang = 1;
+        else
+            $trang = $_GET['trang'];
+        $offSet = ($trang - 1) * $limit;
+        $query = "SELECT tbl_post.*, tbl_category.catName, ad.adminName FROM tbl_post 
+        INNER JOIN tbl_admin ad ON ad.adminID = tbl_post.adminID 
+        INNER JOIN tbl_category ON tbl_category.catID = tbl_post.catID
+        WHERE IsActive = 1 AND Title LIKE '%$s%' OR Abstract LIKE '%$s%' OR Contents LIKE '%$s%' ORDER BY CreatedDate DESC LIMIT $offSet, $limit";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    // phân trang theo thể loại
     public function get_all_post_by_category_paging($id, $limit)
     {
         // $limit = 7;

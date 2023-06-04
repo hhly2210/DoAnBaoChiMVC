@@ -88,13 +88,9 @@ header("Cache-Control: max-age = 10800");
 
                             </ul>
                             <!-- Search Form  -->
-                            <div id="search-wrapper">
-                                <form action="#">
-                                    <input type="text" id="search" placeholder="Tìm chi đó đi...">
-                                    <div id="close-icon"></div>
-                                    <input class="d-none" type="submit" value="">
-                                </form>
-                            </div>
+                            <?php
+                                    include_once __DIR__ . "/search.php";
+                            ?>
                             <!-- Icon login -->
                             <div class="form-submit">
                                 <a class="btn btn-primary" href="/admin/page/login.php"><i class="fas fa-sign-in-alt ml-2"></i> Đăng nhập</a>

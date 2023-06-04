@@ -33,7 +33,8 @@ class comment
 
     public function show_comment()
     {
-        $query = "SELECT tbl_comment.* FROM tbl_comment
+        $query = "SELECT tbl_comment.*, post.Title FROM tbl_comment
+        LEFT JOIN tbl_post post on tbl_comment . postID = post . postID
     ORDER BY commentID DESC";
         $result = $this->db->select($query);
         return $result;
@@ -57,5 +58,11 @@ class comment
             }
         }
         return $datacomment;
+    }
+    public function delete_comment($id)
+    {
+        $query = "delete from tbl_comment where commentID = $id";
+        $result = $this->db->delete($query);
+        return $result;
     }
 }

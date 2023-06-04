@@ -50,14 +50,14 @@ function tao_bang($api_url)
                 </button>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" onclick="duyet(${item.postID})">
-                            <i class="bx bx-edit-alt me-1"></i> Duyệt bài
+                            <i class="bx bx-check-circle me-1"></i> Duyệt bài
                     </a>
                     <a href="editform.php?postID=${item.postID}" class="dropdown-item" onclick="sua(${item.postID})">
                             <i class="bx bx-edit-alt me-1"></i> Sửa
                     </a>
                     <a class="dropdown-item" data-bs-toggle="modal"
                             data-bs-target="#exampleModal" onclick="xoa(${item.postID})">
-                            <i class="bx bx-trash me-1"></i> Xoá
+                            <i class="bx bx-trash me-1"></i> Huỷ bài viết
                     </a>
                 </div>
             </div>

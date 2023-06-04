@@ -1,7 +1,7 @@
 <?php
 ob_start();
 // Đoạn mã HTML và PHP của bạn ở đây
-include_once '../../context/user.php';
+include_once __DIR__ . '/../../context/user.php';
 session_start();
 $id = $_SESSION["adminID"];
 $user = new user();
@@ -44,7 +44,7 @@ if (count($_POST) > 0) {
 							<input class="form-control" type="password" id="confirmPassword" name="confirmPassword"/>
 						</div>
 						<div class="mt-2">
-							<button type="submit" class="btn btn-primary me-2">Save changes</button>
+							<button type="submit" class="btn btn-primary me-2">Lưu</button>
 							<!--<button type="reset" class="btn btn-outline-secondary">Cancel</button>-->
 						</div>
 					</form>

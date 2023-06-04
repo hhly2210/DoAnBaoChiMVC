@@ -9,7 +9,7 @@
 				<form id="edit-form" action="api/edit.php" method="POST" enctype="multipart/form-data">
 					<input type="hidden" name="adminID" value="">
 					<img id="edit-preview-avatar" class="d-block mx-auto my-1 rounded-circle"
-						 style="width: 7.5em; height: 7.5em;">
+						style="width: 7.5em; height: 7.5em;">
 					<div class="mb-3">
 						<label for="edit-adminName" class="col-form-label">Tên người dùng:</label>
 						<input type="text" class="form-control" id="edit-adminName" name="adminName">
