@@ -15,15 +15,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-4">
-                    <div class="footer-single-widget">
-                        <h5>Liên hệ</h5>
-                        <form action="contact.php" method="post">
-                            <input type="email" name="email" id="email" placeholder="Nhập email">
-                            <button type="button"><i class="fa fa-arrow-right"></i></button>
-                        </form>
-                    </div>
-                </div>
             </div>
         </div>
     </footer>

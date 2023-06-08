@@ -1,6 +1,14 @@
 <?php
-include 'inc/header.php';
-include 'inc/slider.php';
+include_once __DIR__ . '/inc/header.php';
+include_once __DIR__ . '/inc/slider.php';
+include_once __DIR__ . "/modules/contact/addcontact.php";
+if (isset($_GET['action'])) {
+    if ($_GET['action'] == 1)
+        echo "<p>Thành công</p>";
+    else
+        echo "<p>Thất bại</p>";
+}
+
 
 ?>
 <section class="contact-area section-padding-100">
@@ -15,7 +23,7 @@ include 'inc/slider.php';
                         <div class="row">
                             <div class="col-12 col-md-6">
                                 <div class="group">
-                                    <input type="text" name="name" id="name" required>
+                                    <input type="text" name="fullName" id="name" required>
                                     <span class="highlight"></span>
                                     <span class="bar"></span>
                                     <label>Họ tên</label>
@@ -51,5 +59,5 @@ include 'inc/slider.php';
 <!-- Google Maps: If you want to google map, just uncomment below codes -->
 
 <?php
-include 'inc/footer.php';
+include_once __DIR__ . '/inc/footer.php';
 ?>
