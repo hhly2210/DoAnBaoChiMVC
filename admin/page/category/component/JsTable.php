@@ -1,24 +1,25 @@
 <table id="category-list" class="table table-dark">
 	<thead>
-	<tr>
-		<th>STT</th>
-		<th>Tên thể loại</th>
-		<th>Mô tả</th>
-		<th>Sửa/Xoá</th>
-	</tr>
+		<tr>
+			<th>STT</th>
+			<th>Tên thể loại</th>
+			<th>Thuộc Menu</th>
+			<th>Mô tả</th>
+			<th>Sửa/Xoá</th>
+		</tr>
 	</thead>
 	<tbody class="table-border-bottom-0">
 	</tbody>
 </table>
 
 <script>
-	function napLaiTable () {
+	function napLaiTable() {
 		let table = document.getElementById('category-list')
 		table.tBodies[0].innerHTML = ''
 		showTable()
 	}
 
-	function showTable () {
+	function showTable() {
 		let table = document.getElementById('category-list')
 		fetch('/admin/api/category/getAll.php')
 			.then(r => r.json())
@@ -30,6 +31,7 @@
         <td>
             <i class='fab fa-angular fa-lg text-danger me-3'></i><strong>${item.catName}</strong>
         </td>
+		<td><span>${data.find(c => c.catID === item.parentID)?.catName ?? 'Menu riêng biệt'}</span></td>
         <td><span>${item.catDescription}</span></td>
         <td>
             <div class='dropdown'>

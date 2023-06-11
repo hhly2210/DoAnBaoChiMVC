@@ -21,15 +21,17 @@ class category
         $this->fm = new Format();
     }
 
-    public function insert_category($catName, $catDescription)
+    public function insert_category($catName, $catDescription, $parentID)
     {
         $catName = $this->fm->validation($catName);
         $catDescription = $this->fm->validation($catDescription);
+        $parentID = $this->fm->validation($parentID);
 
         $catName = mysqli_real_escape_string($this->db->link, $catName);
         $catDescription = mysqli_real_escape_string($this->db->link, $catDescription);
-        if (!empty($catName)) {
-            $query = "INSERT INTO tbl_category(catName, catDescription) VALUES('$catName', '$catDescription')";
+        $parentID = mysqli_real_escape_string($this->db->link, $parentID);
+        if (!empty($catName) && !empty($parentID)) {
+            $query = "INSERT INTO tbl_category(catName, catDescription, parentID) VALUES('$catName', '$catDescription', '$parentID')";
             $result = $this->db->insert($query);
         }
     }

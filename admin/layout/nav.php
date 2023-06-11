@@ -30,7 +30,7 @@
 			<li class="nav-item navbar-dropdown dropdown-user dropdown">
 				<a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
 				   data-bs-toggle="dropdown">
-					<div class="avatar avatar-online">
+					<div class="avatar">
 						<img src="/admin/resource/assets/img/avatars/<?php echo Session::get('Avatar'); ?>" alt
 							 class="w-px-40 h-auto rounded-circle"/>
 					</div>
@@ -40,7 +40,7 @@
 						<a class="dropdown-item" href="#">
 							<div class="d-flex">
 								<div class="flex-shrink-0 me-3">
-									<div class="avatar avatar-online">
+									<div class="avatar">
 										<img
 												src="/admin/resource/assets/img/avatars/<?php echo Session::get('Avatar'); ?>"
 												alt class="w-px-40 h-auto rounded-circle"/>
@@ -62,15 +62,15 @@
 						<div class="dropdown-divider"></div>
 					</li>
 					<li>
-						<a class="dropdown-item" href="#">
+						<a class="dropdown-item" href="/admin/page/settings/accountInformation.php">
 							<i class="bx bx-user me-2"></i>
-							<span class="align-middle">My Profile</span>
+							<span class="align-middle">Thông tin tài khoản</span>
 						</a>
 					</li>
 					<li>
-						<a class="dropdown-item" href="#">
+						<a class="dropdown-item" href="/admin/page/settings/changePassword.php">
 							<i class="bx bx-cog me-2"></i>
-							<span class="align-middle">Settings</span>
+							<span class="align-middle">Đổi mật khẩu</span>
 						</a>
 					</li>
 					<li>

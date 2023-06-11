@@ -6,7 +6,7 @@
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-				<form id="edit-form" action="api/edit.php" method="POST">
+				<form id="edit-form" action="api/edit.php" method="POST" enctype="multipart/form-data">
 					<input type="hidden" name="catID" value="">
 					<div class="mb-3">
 						<label for="recipient-name" class="col-form-label">Tên thể loại thay thế:</label>
@@ -27,7 +27,7 @@
 </div>
 
 <script>
-	function sua (id) {
+	function sua(id) {
 		let form = document.getElementById('edit-form')
 		form.elements.catID.value = id
 		fetch('/admin/api/category/get.php?catID=' + id)
@@ -42,7 +42,7 @@
 			})
 	}
 
-	function submit_sua () {
+	function submit_sua() {
 		let form = document.getElementById('edit-form')
 		fetch('/admin/api/category/edit.php', {
 			method: 'POST',
@@ -54,5 +54,4 @@
 			}
 		})
 	}
-
 </script>

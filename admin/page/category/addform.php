@@ -20,22 +20,24 @@ $idscript = "n" . strval(random_int(0, 99));
 						<form id="add-form" class="bg-light">
 							<div class="row mb-3">
 								<label class="col-sm-2 col-form-label" for="catName">Tên thể loại
-									<span
-											class="text-danger">*</span></label>
+									<span class="text-danger">*</span></label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" name="catName"
-										   id="catName"
-										   placeholder="Nhập vào đây👉👈"
-										   required/>
+									<input type="text" class="form-control" name="catName" id="catName" placeholder="Nhập vào đây👉👈" required />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<label for="add-catID" class="col-sm-2 col-form-label">Thuộc menu thể loại<span class="text-danger">*</span></label>
+								<div class="col-sm-10">
+									<select class="select2 form-select" name="catID" id="add-catID">
+										<option value="0">Thể loại riêng biệt(mới)</option>
+									</select>
 								</div>
 							</div>
 							<div class="row mb-3">
 								<label class="col-sm-2 col-form-label" for="basic-default-message">Mô tả về thể loại
 									trên</label>
 								<div class="col-sm-10">
-                                        <textarea id="basic-default-message" class="form-control" name="catDescription"
-												  placeholder="Là một thể loại mà🤔" aria-label="Là một thể loại mà🤔"
-												  aria-describedby="basic-icon-default-message2"></textarea>
+									<textarea id="basic-default-message" class="form-control" name="catDescription" placeholder="Là một thể loại mà🤔" aria-label="Là một thể loại mà🤔" aria-describedby="basic-icon-default-message2"></textarea>
 								</div>
 							</div>
 							<div class="row justify-content-end">
@@ -58,11 +60,14 @@ $idscript = "n" . strval(random_int(0, 99));
 </div>
 
 <script>
-	function submit () {
+	function submit() {
 		let form = document.getElementById('add-form')
 		let thongBao = document.getElementById('$idscript')
 		thongBao.noiDung = thongBao.querySelector('.noi-dung')
-		fetch('/admin/api/category/add.php', {method: 'POST', body: new FormData(form)})
+		fetch('/admin/api/category/add.php', {
+				method: 'POST',
+				body: new FormData(form)
+			})
 			.then(r => {
 				if (r.status === 200) {
 					thongBao.classList.add('alert-success')
@@ -94,11 +99,28 @@ $idscript = "n" . strval(random_int(0, 99));
 		}
 	})
 
-	function tuTat (dom) {
+	function tuTat(dom) {
 		setTimeout(() => {
 			dom.classList.add('fade')
 			dom.classList.add('d-none')
 		}, 3456)
 	}
-</script>
 
+	function cap_nhat_danh_sach_theloai() {
+		let selectCat = document.getElementById('add-form').elements.catID
+		fetch('/admin/api/category/getAll.php')
+			.then(res => {
+				if (res.status === 200) {
+					res.json().then(obj => {
+						obj.forEach(item => {
+							let option = document.createElement('option')
+							option.value = item.catID
+							option.text = item.catName
+							selectCat.add(option)
+						})
+					})
+				}
+			})
+	}
+	cap_nhat_danh_sach_theloai()
+</script>

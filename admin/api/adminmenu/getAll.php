@@ -13,8 +13,7 @@ while ($result = $showCate->fetch_assoc()) {
     $tmp = array(
         'catID' => $result['catID'],
         'catName' => $result['catName'],
-        'catDescription' => $result['catDescription'],
-        'parentID' => $result['parentID']
+        'catDescription' => $result['catDescription']
     );
     $json[] = $tmp;
 }
