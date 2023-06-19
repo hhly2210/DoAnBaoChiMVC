@@ -54,7 +54,7 @@ header("Cache-Control: max-age = 10800");
 <body>
 
     <!-- ***** Header Area Start ***** -->
-    <header class="header-area" style = "background-color: #fafafa">
+    <header class="header-area">
         <div class="container">
             <div class="row">
                 <div class="col-12">
