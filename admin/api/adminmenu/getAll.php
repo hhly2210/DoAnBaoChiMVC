@@ -1,19 +1,26 @@
 <?php
-include_once __DIR__ . '/../../context/category.php';
+include_once __DIR__ . '/../../context/adminmenudata.php';
 include_once __DIR__ . '/../../../lib/session.php';
 
 Session::checkSession();
 
-$cat = new category();
-$showCate = $cat->show_category();
+$menu = new adminmenudata();
+$show = $menu->show_admin_menu();
 
 $json = [];
 
-while ($result = $showCate->fetch_assoc()) {
+while ($result = $show->fetch_assoc()) {
     $tmp = array(
-        'catID' => $result['catID'],
-        'catName' => $result['catName'],
-        'catDescription' => $result['catDescription']
+        'adminMenuID' => $result['adminMenuID'],
+        'adminMenuName' => $result['adminMenuName'],
+        'ParentLevel' => $result['ParentLevel'],
+        'MenuOrder' => $result['MenuOrder'],
+        'MenuTarget' => $result['MenuTarget'],
+        'Icon' => $result['Icon'],
+        'Link' => $result['Link'],
+        'IdName' => $result['IdName'],
+        'IsActive' => $result['IsActive'],
+        'ClassName' => $result['ClassName']
     );
     $json[] = $tmp;
 }

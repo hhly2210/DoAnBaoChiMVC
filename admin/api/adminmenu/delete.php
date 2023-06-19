@@ -1,10 +1,10 @@
 <?php
-include_once __DIR__ . '/../../context/category.php';
-$cat = new category();
+include_once __DIR__ . '/../../context/adminmenudata.php';
+$menu = new adminmenudata();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $inputJSON = file_get_contents('php://input');
     $input = json_decode($inputJSON, TRUE);
-    $insertCat = $cat->delete_category($input['catID']);
+    $insertCat = $menu->delete_admin_menu($input['adminMenuID']);
     http_response_code(200);
     die();
 }

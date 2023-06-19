@@ -58,9 +58,9 @@ class category
         return $result;
     }
 
-    public function update_category($id, $catName, $catDescription)
+    public function update_category($id, $catName, $catDescription, $parentID)
     {
-        $query = "update tbl_category set catName = '$catName', catDescription = '$catDescription' where catID = $id ";
+        $query = "update tbl_category set catName = '$catName', catDescription = '$catDescription', parentID ='$parentID' where catID = $id ";
         $result = $this->db->update($query);
         return $result;
     }

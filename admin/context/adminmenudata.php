@@ -17,28 +17,28 @@ class adminmenudata
         $this->fm = new Format();
     }
 
-    public function insert_admin_menu($adminMenuName, $ParentLevel, $MenuOrder, $MenuTarget, $Icon, $Link, $IdName, $IsActive, $ClassName)
+    public function insert_admin_menu($adminMenuName, $ParentLevel, $MenuOrder, $Icon, $Link, $IsActive, $ClassName)
     {
         $adminMenuName = $this->fm->validation($adminMenuName);
         $ParentLevel = $this->fm->validation($ParentLevel);
         $MenuOrder = $this->fm->validation($MenuOrder);
-        $MenuTarget = $this->fm->validation($MenuTarget);
+        // $MenuTarget = $this->fm->validation($MenuTarget);
         $Icon = $this->fm->validation($Icon);
         $Link = $this->fm->validation($Link);
-        $IdName = $this->fm->validation($IdName);
+        // $IdName = $this->fm->validation($IdName);
         $IsActive = $this->fm->validation($IsActive);
 
         $adminMenuName = mysqli_real_escape_string($this->db->link, $adminMenuName);
         $ParentLevel = mysqli_real_escape_string($this->db->link, $ParentLevel);
         $MenuOrder = mysqli_real_escape_string($this->db->link, $MenuOrder);
-        $MenuTarget = mysqli_real_escape_string($this->db->link, $MenuTarget);
+        // $MenuTarget = mysqli_real_escape_string($this->db->link, $MenuTarget);
         $Icon = mysqli_real_escape_string($this->db->link, $Icon);
         $Link = mysqli_real_escape_string($this->db->link, $Link);
-        $IdName = mysqli_real_escape_string($this->db->link, $IdName);
+        // $IdName = mysqli_real_escape_string($this->db->link, $IdName);
         $IsActive = mysqli_real_escape_string($this->db->link, $IsActive);
         $ClassName = mysqli_real_escape_string($this->db->link, $ClassName);
         if (!empty($adminMenuName)) {
-            $query = "INSERT INTO tbl_adminmenu(adminMenuName, ParentLevel, MenuOrder, MenuTarget, Icon, Link, IdName, IsActive, ClassName) VALUES('$adminMenuName', $ParentLevel, $MenuOrder, '$MenuTarget', '$Icon', '$Link', '$IdName', $IsActive, '$ClassName')";
+            $query = "INSERT INTO tbl_adminmenu(adminMenuName, ParentLevel, MenuOrder, Icon, Link, IsActive, ClassName) VALUES('$adminMenuName', $ParentLevel, $MenuOrder, '$Icon', '$Link', $IsActive, '$ClassName')";
             $result = $this->db->insert($query);
         }
     }
@@ -95,9 +95,9 @@ class adminmenudata
         return $result;
     }
 
-    public function update_admin_menu($id, $adminMenuName, $ParentLevel, $MenuOrder, $MenuTarget, $Icon, $Link, $IdName, $IsActive)
+    public function update_admin_menu($id, $adminMenuName, $ParentLevel, $MenuOrder, $Icon, $Link, $IsActive, $ClassName)
     {
-        $query = "update tbl_adminmenu set adminMenuName = '$adminMenuName', ParentLevel = '$ParentLevel', MenuOrder = '$MenuOrder', MenuTarget = '$MenuTarget', Icon = '$Icon', Link = '$Link', IdName = '$IdName', IsActive = '$IsActive' where adminMenuID = $id ";
+        $query = "update tbl_adminmenu set adminMenuName = '$adminMenuName', ParentLevel = '$ParentLevel', MenuOrder = '$MenuOrder', Icon = '$Icon', Link = '$Link', IsActive = '$IsActive', ClassName = '$ClassName' where adminMenuID = $id ";
         $result = $this->db->update($query);
         return $result;
     }

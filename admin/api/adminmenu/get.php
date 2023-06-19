@@ -1,11 +1,11 @@
 <?php
-include_once '/../../context/category.php';
-include_once '/../../../lib/session.php';
+include_once __DIR__ .'/../../context/adminmenudata.php';
+include_once __DIR__ .'/../../../lib/session.php';
 
 Session::checkSession();
-$id = $_GET["catID"];
-$cat = new category();
-$showCate = $cat->show_category_one($id);
+$id = $_GET["adminMenuID"];
+$menu = new adminmenudata();
+$showCate = $menu->show_admin_menu_one($id);
 header('content-type:application/json');
 
 $json = [];

@@ -54,7 +54,7 @@ header("Cache-Control: max-age = 10800");
 <body>
 
     <!-- ***** Header Area Start ***** -->
-    <header class="header-area">
+    <header class="header-area" style = "background-color: #fafafa">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -67,7 +67,7 @@ header("Cache-Control: max-age = 10800");
                         <div class="collapse navbar-collapse" id="worldNav">
                             <ul class="navbar-nav ml-auto" id="main-menu">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.php">Trang chủ <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="index.php">HOME <span class="sr-only">(current)</span></a>
                                 </li>
                                 <!-- <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="contact.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
